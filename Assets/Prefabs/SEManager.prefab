@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8483398409194093420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7521127176204447298}
+  - component: {fileID: 4911436224570022636}
+  m_Layer: 0
+  m_Name: SEManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7521127176204447298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8483398409194093420}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 434.22272, y: 353.46616, z: -4.800009}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4911436224570022636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8483398409194093420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9880cc0e3571b4e36a27c428720a8caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seMixerGroup: {fileID: -2914203093863034194, guid: f789843a274c340cb976f3e5fb359cf3, type: 2}
+  soundDatas:
+  - name: playerAttack
+    audioClip: {fileID: 8300000, guid: 1b8c24557f80a4d248e197d1ea1a8142, type: 3}
+    volume: 1
+  - name: enemyAttack
+    audioClip: {fileID: 8300000, guid: 1b8c24557f80a4d248e197d1ea1a8142, type: 3}
+    volume: 0.5
+  - name: button
+    audioClip: {fileID: 8300000, guid: a2af495fb5b1b43a3b9457da3e08de07, type: 3}
+    volume: 1
+  - name: coin
+    audioClip: {fileID: 8300000, guid: 716112fe76c2042118b1544b0bff7125, type: 3}
+    volume: 1
+  - name: levelUp
+    audioClip: {fileID: 8300000, guid: 295aecdfed9e64deeab79853422071f4, type: 3}
+    volume: 0.2
+  - name: footstep
+    audioClip: {fileID: 8300000, guid: dea09f1f07d11490ba4ccac854c2d760, type: 3}
+    volume: 1
+  - name: ball0
+    audioClip: {fileID: 8300000, guid: 4e6c340bded4e400580e0140f6462bfb, type: 3}
+    volume: 1
+  - name: ball1
+    audioClip: {fileID: 8300000, guid: 8375ad244324541b3adadf5a250c1865, type: 3}
+    volume: 1
+  - name: ball2
+    audioClip: {fileID: 8300000, guid: ed657a9df16e445bc8e2b3f246cdb9d3, type: 3}
+    volume: 1
+  - name: ball3
+    audioClip: {fileID: 8300000, guid: d6a4170b7abfb4795a0e41373a3ab642, type: 3}
+    volume: 1
+  - name: ball4
+    audioClip: {fileID: 8300000, guid: 96c5565e27a9e40dab9ab24987dcc3ae, type: 3}
+    volume: 1
+  - name: fall
+    audioClip: {fileID: 8300000, guid: d5752acecbf7341408306fe92e3c2334, type: 3}
+    volume: 1
+  - name: error
+    audioClip: {fileID: 8300000, guid: d574c26432bc949eb8f93dfc31c9d078, type: 3}
+    volume: 1
+  - name: footsteps
+    audioClip: {fileID: 8300000, guid: dea09f1f07d11490ba4ccac854c2d760, type: 3}
+    volume: 1
+  - name: heal
+    audioClip: {fileID: 8300000, guid: 71a849ee2bc83430d86bbf5c8f9039a6, type: 3}
+    volume: 0.5
