@@ -49,8 +49,6 @@ public class GameManager : MonoBehaviour
     
     [Header("オブジェクト")]
     [SerializeField] private GameObject playerObj;
-    [SerializeField] public EnemyContainer enemyContainer;
-    [SerializeField] public Shop shop;
     [SerializeField] public Canvas pixelCanvas;
     [SerializeField] public Canvas uiCanvas;
 
@@ -59,9 +57,7 @@ public class GameManager : MonoBehaviour
     public readonly ReactiveProperty<int> coin = new(0);
     private int seed = 42;
     private bool isPaused;
-    public Player player => playerObj.GetComponent<Player>();
     public UIManager uiManager => this.GetComponent<UIManager>();
-    public StageManager stageManager => GetComponent<StageManager>();
 
     public float RandomRange(float min, float max)
     {
@@ -132,20 +128,13 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Merge:
                 Physics2D.simulationMode = SimulationMode2D.FixedUpdate;
-                MergeManager.Instance.ResetRemainingBalls();
                 break;
             case GameState.PlayerAttack:
                 Physics2D.simulationMode = SimulationMode2D.Script;
-                Utils.Instance.WaitAndInvoke(1f, () =>
-                {
-                    MergeManager.Instance.Attack();
-                });
                 break;
             case GameState.EnemyAttack:
-                enemyContainer.Action();
                 break;
             case GameState.MapSelect:
-                stageManager.SetNextNodeActive();
                 uiManager.EnableCanvasGroup("Map", true);
                 break;
             case GameState.Event:

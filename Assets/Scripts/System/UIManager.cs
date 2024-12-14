@@ -17,8 +17,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Slider bgmSlider;
     [SerializeField] private Slider seSlider;
     [SerializeField] private Image fadeImage;
-    [SerializeField] private RelicDescriptionWindow relicDescriptionWindow;
-    [SerializeField] private BallDescriptionWindow ballDescriptionWindow;
     
     [SerializeField] private Volume volume;
     [SerializeField] private List<CanvasGroup> canvasGroups;
@@ -63,16 +61,6 @@ public class UIManager : MonoBehaviour
         stageText.text = "stage: " + s;
     }
     
-    public void OnClickRestButton()
-    {
-        EventManager.OnRest.Trigger(20);
-        var v = EventManager.OnRest.GetAndResetValue();
-        GameManager.Instance.player.Heal(v);
-        
-        GameManager.Instance.ChangeState(GameManager.GameState.MapSelect);
-        EnableCanvasGroup("Rest", false);
-    }
-    
     public void OnClickSkippRestButton()
     {
         SeManager.Instance.PlaySe("button");
@@ -85,7 +73,6 @@ public class UIManager : MonoBehaviour
         SeManager.Instance.PlaySe("button");
         EnableCanvasGroup("Shop", false);
         GameManager.Instance.ChangeState(GameManager.GameState.MapSelect);
-        Shop.Instance.CloseShop();
     }
     
     public void OnClickTreasureExit()
@@ -93,7 +80,6 @@ public class UIManager : MonoBehaviour
         SeManager.Instance.PlaySe("button");
         EnableCanvasGroup("Treasure", false);
         GameManager.Instance.ChangeState(GameManager.GameState.MapSelect);
-        Treasure.Instance.CloseTreasure();
     }
 
     public void OnClickPause()
@@ -148,26 +134,6 @@ public class UIManager : MonoBehaviour
         vignette.intensity.value = value;
     }
     
-    public void ShowRelicDescriptionWindow(RelicData r, Vector3 pos)
-    {
-        relicDescriptionWindow.ShowWindow(r, pos);
-    }
-    
-    public void ShowBallDescriptionWindow(BallData b, Vector3 pos)
-    {
-        ballDescriptionWindow.ShowWindow(b, pos);
-    }
-    
-    public void HideRelicDescriptionWindow()
-    {
-        relicDescriptionWindow.HideWindow();
-    }
-    
-    public void HideBallDescriptionWindow()
-    {
-        ballDescriptionWindow.HideWindow();
-    }
-
     private void Awake()
     {
         bgmSlider.value = PlayerPrefs.GetFloat("BgmVolume", 1.0f);
@@ -178,27 +144,6 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.coin.Subscribe(UpdateCoinText).AddTo(this);
-        GameManager.Instance.stageManager.currentStageCount.Subscribe(UpdateStageText).AddTo(this);
-        GameManager.Instance.player.exp.Subscribe((v) =>
-        {
-            UpdateExpText(v, GameManager.Instance.player.maxExp);
-            UpdateLevelText(GameManager.Instance.player.level);
-        }).AddTo(this);
-        GameManager.Instance.player.health.Subscribe((v) =>
-        {
-            hpSlider.value = v;
-            hpText.text = v + "/" + GameManager.Instance.player.maxHealth;
-            if (v < 30)
-            {
-                SetVignette(((30.0f-v)/30.0f)*0.3f);
-            }
-        }).AddTo(this);
-        GameManager.Instance.player.maxHealth.Subscribe((v) =>
-        {
-            hpSlider.maxValue = v;
-            hpText.text = GameManager.Instance.player.health.Value + "/" + v;
-        }).AddTo(this);
         
         bgmSlider.onValueChanged.AddListener((value) =>
         {
@@ -219,12 +164,5 @@ public class UIManager : MonoBehaviour
 
         fadeImage.color = new Color(0, 0, 0, 1);
         fadeImage.DOFade(0, 2f).SetUpdate(true);
-    }
-
-    private void Update()
-    {
-        // 解像度に合わせてレンダーテクスチャのサイズを変更
-        var rt = renderTexture.GetComponent<RectTransform>();
-        rt.sizeDelta = new Vector2(Screen.width, Screen.height);
     }
 }

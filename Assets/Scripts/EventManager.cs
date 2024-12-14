@@ -26,8 +26,8 @@ public static class EventManager
     public static readonly GameEvent<int> OnEnemyDamage = new (0);
     // 敵の回復時: 敵の回復量
     public static readonly GameEvent<int> OnEnemyHeal = new (0);
-    // 敵撃破時: EnemyBase
-    public static readonly GameEvent<EnemyBase> OnEnemyDefeated = new (null);
+    // 敵撃破時: なし
+    public static readonly GameEvent<int> OnEnemyDefeated = new (0);
     // プレイヤー死亡時: 復活するかどうか
     public static readonly GameEvent<bool> OnPlayerDeath = new (false);
     // ボールを落とした時: なし
