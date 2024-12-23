@@ -11,6 +11,8 @@ namespace ScriptableObject
         [FormerlySerializedAs("itemDataList")] [SerializeField] 
         public List<ItemData> list = new ();
 
+        private float _totalWeight;
+
         public List<ItemData> GetItemDataFromRarity(Rarity r)
         {
             return list.Where(bd => bd.rarity == r).ToList();
@@ -18,7 +20,17 @@ namespace ScriptableObject
         
         public ItemData GetRandomItemData()
         {
-            return list[Random.Range(0, list.Count)];
+            var value = Random.Range(0, _totalWeight);
+            
+            foreach (var itemData in list)
+            {
+                value -= itemData.probability;
+                if (value <= 0)
+                {
+                    return itemData;
+                }
+            }
+            return list[0];
         }
 
         public void Register()
@@ -47,6 +59,8 @@ namespace ScriptableObject
 
             UnityEditor.EditorUtility.SetDirty(this); // ScriptableObjectを更新
 #endif
+            
+            _totalWeight = list.Sum(itemData => itemData.probability);
         }
     }
 }
