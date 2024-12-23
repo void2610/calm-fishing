@@ -13,7 +13,7 @@ namespace Fishing
         
         private readonly List<int> _itemAmountList = new ();
 
-        public void AddRandomItem()
+        public void GetRandomItem()
         {
             var itemData = allItemDataList.GetRandomItemData();
             _itemAmountList[itemData.id]++;
@@ -21,6 +21,11 @@ namespace Fishing
             Debug.Log($"アイテムを追加しました: {itemData.displayName}");
 
             Save();
+        }
+        
+        public int GetItemAmount(int id)
+        {
+            return _itemAmountList[id];
         }
     
         private void Save()

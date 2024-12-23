@@ -35,7 +35,7 @@ namespace Fishing
                 fishingGauge.material.SetFloat(RatioProperty, 1);
                 await fishingGauge.material.DOFloat(0, RatioProperty, fishingTime).SetEase(Ease.Linear).ToUniTask(cancellationToken: cancellationToken);
                 
-                InventoryManager.Instance.AddRandomItem();
+                InventoryManager.Instance.GetRandomItem();
                 
                 await UniTask.Delay(500, cancellationToken: cancellationToken);
                 fishingGauge.material.SetFloat(RatioProperty, 1);
