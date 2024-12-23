@@ -3,34 +3,19 @@ using UnityEngine;
 
 
 
-public enum EffectTiming
+public enum Weather
 {
-    OnGameStart,           // ゲーム開始時
-    OnAcquisition,         // レリック獲得時
-    AlwaysActive,          // 常に
-    OnPlayerAttack,        // プレイヤーの攻撃時
-    OnPlayerDamaged,       // プレイヤーがダメージを受けた時
-    OnPlayerHeal,          // プレイヤーが回復した時
-    OnEnemyAttack,         // 敵の攻撃時
-    OnEnemyHeal,           // 敵が回復した時
-    OnEnemyInit,           // 敵初期化時
-    OnEnemySpawn,          // 敵出現時
-    OnEnemyDefeated,       // 敵撃破時
-    OnCoinGain,            // コイン獲得時
-    OnExperienceGain,      // 経験値獲得時
-    OnLevelUp,             // レベルアップ時
-    OnStageClear,          // ステージクリア時
-    OnStageStart,          // ステージ開始時
-    OnPlayerDeath,         // プレイヤー死亡時
-    OnMergeStart,          // マージ開始時
-    OnBallDropped,         // ボールを落とした時
-    OnBallMerged,          // マージ時
-    OnMergeEnd,            // マージ終了時
-    OnTurnStart,           // ターン開始時
-    OnTurnEnd,             // ターン終了時
-    OnShopEnter,           // ショップ開始時
-    OnShopExit,            // ショップ終了時
-    OnItemPurchased        // ショップで購入時
+    Sunny,
+    Cloudy,
+    Rainy,
+    Snowy
+}
+public enum TimePeriod
+{
+    Dawn,
+    Noon,
+    Dusk,
+    Night
 }
 
 public enum Rarity
@@ -40,7 +25,6 @@ public enum Rarity
     Rare,
     Epic,
     Legendary,
-    Boss
 }
 
 public static class MyColors
@@ -56,21 +40,6 @@ public static class MyColors
         { Rarity.Epic, new Color(0.7f, 0.3f, 0.9f) },        // 紫
         { Rarity.Legendary, new Color(1f, 0.8f, 0f) }        // 金
     };
-    
-    /// <summary>
-    /// ボールの色を保持する辞書
-    /// </summary>
-    private static readonly List<Color> ballColors = new()
-    {
-        new Color(0.5f,0.5f,0.5f),
-        Color.green,
-        Color.blue,
-        Color.magenta,
-        Color.yellow,
-        Color.red,
-        Color.cyan
-    };
-
 
     /// <summary>
     /// レアリティに対応する色を取得する
@@ -86,19 +55,5 @@ public static class MyColors
 
         // デフォルトの色を返す（例: 白）
         return Color.white;
-    }
-    
-    /// <summary>
-    /// ボールの色を取得する
-    /// </summary>
-    /// <param name="level">ボールのレベル</param>
-    /// <returns>ボールの色</returns>
-    public static Color GetBallColor(int level)
-    {
-        if (level < 0 || level >= ballColors.Count)
-        {
-            return Color.white;
-        }
-        return ballColors[level];
     }
 }

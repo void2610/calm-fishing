@@ -19,7 +19,7 @@ public class Coin : MonoBehaviour
             this.transform.DOPath(new [] { this.transform.position, middle, target }, 0.8f).SetEase(Ease.OutExpo
             ).OnComplete(() =>
             {
-                GameManager.Instance.AddCoin(1);
+                // GameManager.Instance.AddCoin(1);
 
                 this.GetComponent<SpriteRenderer>().DOFade(0, 0.3f).OnComplete(() =>
                     Destroy(this.gameObject)
