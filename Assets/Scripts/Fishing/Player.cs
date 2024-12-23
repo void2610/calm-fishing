@@ -18,11 +18,13 @@ namespace Fishing
 
         private async UniTaskVoid MoveRandomly()
         {
+            var cancellationToken = this.GetCancellationTokenOnDestroy();
+            
             while (true)
             {
                 // 次の移動までの待機
                 var waitTime = Random.Range(moveInterval.x, moveInterval.y);
-                await UniTask.Delay(System.TimeSpan.FromSeconds(waitTime));
+                await UniTask.Delay(System.TimeSpan.FromSeconds(waitTime), cancellationToken: cancellationToken);
 
                 var dis = Random.Range(moveDistance.x, moveDistance.y);
                 var dir = Random.value < 0.5f ? 1 : -1;
@@ -33,7 +35,7 @@ namespace Fishing
                 var targetX = transform.position.x + dis * dir;
 
                 // DoTweenで移動
-                await transform.DOMoveX(targetX, dis / moveSpeed).SetEase(Ease.InOutQuad).ToUniTask();
+                await transform.DOMoveX(targetX, dis / moveSpeed).SetEase(Ease.InOutQuad).ToUniTask(cancellationToken: cancellationToken);
             }
         }
     }
