@@ -24,6 +24,14 @@ jobs:
         with:
           lfs: true
           
+      - name: Install Unity dependencies 📦
+        run: |
+          echo "Resolving dependencies"
+          cat ProjectSettings/ProjectSettings.asset
+          mkdir -p ./Library/PackageCache
+          mkdir -p ./Library/ScriptAssemblies
+          unity-editor -quit -batchmode -logFile -projectPath . -executeMethod UnityEditor.EditorApplication.Exit
+          
       - name: Enable Decompression Fallback in ProjectSettings.asset 🔧
         run: |
           sed -i 's/WebGLLinkerTarget: 0/WebGLLinkerTarget: 1/' ProjectSettings/ProjectSettings.asset
@@ -89,18 +97,3 @@ jobs:
         uses: actions/deploy-pages@v2
         with:
           artifact_name: CIBuilds
-          
-  discord:
-    name: Notify Discord 🤖
-    runs-on: ubuntu-latest
-    needs: deploy
-    steps:
-      - name: Notify Discord 🚨
-        env:
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          GITHUB_ACTOR: ${{ github.actor }}
-          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
-        run: |
-          curl -X POST -H "Content-Type: application/json" -d "{
-          \"content\": \"ゲームがアップデートされました!:partying_face: \n https://void2610.github.io/merge-rogue/ \n コミット作成者: ${GITHUB_ACTOR} \n コミットメッセージ: ${COMMIT_MESSAGE}\"
-          }" $DISCORD_WEBHOOK_URL
