@@ -13,15 +13,15 @@ public class GameManager : MonoBehaviour
             Instance = this;
             if (PlayerPrefs.GetString("SeedText", "") == "")
             {
-                seed = (int)DateTime.Now.Ticks;
+                _seed = (int)DateTime.Now.Ticks;
                 // Debug.Log("random seed: " + seed);
             }
             else
             {
-                seed = PlayerPrefs.GetInt("Seed", seed);
+                _seed = PlayerPrefs.GetInt("Seed", _seed);
                 // Debug.Log("fixed seed: " + seed);
             }
-            random = new System.Random(seed);
+            _random = new System.Random(_seed);
             DOTween.SetTweensCapacity(tweenersCapacity: 800, sequencesCapacity: 800);
         }
         else
@@ -29,148 +29,69 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-    public enum GameState
-    {
-        BattlePreparation,
-        Merge,
-        PlayerAttack,
-        EnemyAttack,
-        BattleResult,
-        LevelUp,
-        MapSelect,
-        StageMoving,
-        Event,
-        GameOver,
-        Clear,
-        Other
-    }
-    public GameState state = GameState.Merge;
     
     [Header("オブジェクト")]
     [SerializeField] private GameObject playerObj;
+    [SerializeField] private GameObject cloudPrefab;
     [SerializeField] public Canvas pixelCanvas;
     [SerializeField] public Canvas uiCanvas;
 
-    private System.Random random { get; set; }
-    public float timeScale { get; private set; } = 1.0f;
-    public readonly ReactiveProperty<int> coin = new(0);
-    private int seed = 42;
-    private bool isPaused;
-    public UIManager uiManager => this.GetComponent<UIManager>();
+    public float TimeScale { get; private set; } = 1.0f;
+    public UIManager UIManager => this.GetComponent<UIManager>();
+
+    private int _seed = 42;
+    private bool _isPaused;
+    private System.Random _random;
 
     public float RandomRange(float min, float max)
     {
-        var randomValue = (float)(this.random.NextDouble() * (max - min) + min);
+        var randomValue = (float)(this._random.NextDouble() * (max - min) + min);
         return randomValue;
     }
 
     public int RandomRange(int min, int max)
     {
-        var randomValue = this.random.Next(min, max);
+        var randomValue = this._random.Next(min, max);
         return randomValue;
-    }
-    
-    public void AddCoin(int amount)
-    {
-        EventManager.OnCoinGain.Trigger(amount);
-        var c = EventManager.OnCoinGain.GetAndResetValue();
-        coin.Value += c;
-    }
-    
-    public void SubtractCoin(int amount)
-    {
-        coin.Value -= amount;
     }
 
     public void ChangeTimeScale()
     {
         if (PlayerPrefs.GetInt("IsDoubleSpeed", 0) == 0)
         {
-            timeScale = 3.0f;
+            TimeScale = 3.0f;
             PlayerPrefs.SetInt("IsDoubleSpeed", 1);
         }
         else
         {
-            timeScale = 1.0f;
+            TimeScale = 1.0f;
             PlayerPrefs.SetInt("IsDoubleSpeed", 0);
         }
-        Time.timeScale = timeScale;
-    }
-
-    public void GameOver()
-    {
-        ChangeState(GameState.GameOver);
-        uiManager.EnableCanvasGroup("GameOver", true);
-    }
-
-    public void ChangeState(GameState newState)
-    {
-        // switch (state)
-        // {
-        // }
-        state = newState;
-        switch (newState)
-        {
-            case GameState.StageMoving:
-                // レベルアップが残っている場合はレベルアップ画面を表示
-                if (uiManager.remainingLevelUps > 0)
-                    ChangeState(GameState.LevelUp);
-                else
-                    ChangeState(GameState.MapSelect);
-                break;
-            case GameState.BattlePreparation:
-                // バトル準備
-                Utils.Instance.WaitAndInvoke(1.0f, () =>
-                {
-                    ChangeState(GameState.Merge);
-                });
-                break;
-            case GameState.Merge:
-                Physics2D.simulationMode = SimulationMode2D.FixedUpdate;
-                break;
-            case GameState.PlayerAttack:
-                Physics2D.simulationMode = SimulationMode2D.Script;
-                break;
-            case GameState.EnemyAttack:
-                break;
-            case GameState.MapSelect:
-                uiManager.EnableCanvasGroup("Map", true);
-                break;
-            case GameState.Event:
-                break;
-            case GameState.LevelUp:
-                uiManager.EnableCanvasGroup("LevelUp", true);
-                break;
-        }
+        Time.timeScale = TimeScale;
     }
 
     public void Start()
     {
         if (PlayerPrefs.GetInt("IsDoubleSpeed", 0) == 1)
         {
-            timeScale = 3.0f;
-            Time.timeScale = timeScale;
+            TimeScale = 3.0f;
+            Time.timeScale = TimeScale;
         }
-        
-        ChangeState(GameState.StageMoving);
-
-        AddCoin(Application.isEditor ? 9999 : 10);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            if (isPaused)
+            if (_isPaused)
             {
-                isPaused = false;
-                uiManager.OnClickResume();
+                _isPaused = false;
+                UIManager.OnClickResume();
             }
             else
             {
-                isPaused = true;
-                uiManager.OnClickPause();
+                _isPaused = true;
+                UIManager.OnClickPause();
             }
         }
     }

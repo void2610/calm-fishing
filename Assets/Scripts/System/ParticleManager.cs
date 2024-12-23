@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using TMPro;
 using DG.Tweening;
+using Particle;
 using R3;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;

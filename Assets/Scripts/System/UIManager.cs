@@ -21,14 +21,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Volume volume;
     [SerializeField] private List<CanvasGroup> canvasGroups;
     [SerializeField] private TextMeshProUGUI coinText;
-    [SerializeField] private TextMeshProUGUI stageText;
-    [SerializeField] private TextMeshProUGUI expText;
-    [SerializeField] private TextMeshProUGUI levelText;
-    [SerializeField] public Slider hpSlider;
-    [SerializeField] public TextMeshProUGUI hpText;
-
-    public int remainingLevelUps;
-
+    
     public void EnableCanvasGroup(string canvasName, bool e)
     {
         var canvasGroup = canvasGroups.Find(c => c.name == canvasName);
@@ -43,45 +36,7 @@ public class UIManager : MonoBehaviour
     {
         coinText.text = "coin: " + amount.ToString();
     }
-
-    private void UpdateExpText(int now, int max)
-    {
-        expText.text = "exp: " + now + "/" + max;
-    }
-
-    private void UpdateLevelText(int level)
-    {
-        if (!levelText) return;
-        levelText.text = "level: " + level;
-    }
-
-    private void UpdateStageText(int stage)
-    {
-        int s = Mathf.Max(1, stage + 1);
-        stageText.text = "stage: " + s;
-    }
     
-    public void OnClickSkippRestButton()
-    {
-        SeManager.Instance.PlaySe("button");
-        GameManager.Instance.ChangeState(GameManager.GameState.MapSelect);
-        EnableCanvasGroup("Rest", false);
-    }
-
-    public void OnClickShopExit()
-    {
-        SeManager.Instance.PlaySe("button");
-        EnableCanvasGroup("Shop", false);
-        GameManager.Instance.ChangeState(GameManager.GameState.MapSelect);
-    }
-    
-    public void OnClickTreasureExit()
-    {
-        SeManager.Instance.PlaySe("button");
-        EnableCanvasGroup("Treasure", false);
-        GameManager.Instance.ChangeState(GameManager.GameState.MapSelect);
-    }
-
     public void OnClickPause()
     {
         SeManager.Instance.PlaySe("button");
@@ -98,7 +53,7 @@ public class UIManager : MonoBehaviour
     public void OnClickResume()
     {
         SeManager.Instance.PlaySe("button");
-        Time.timeScale = GameManager.Instance.timeScale;
+        Time.timeScale = GameManager.Instance.TimeScale;
         EnableCanvasGroup("Pause", false);
     }
 
@@ -107,31 +62,6 @@ public class UIManager : MonoBehaviour
         SeManager.Instance.PlaySe("button");
         fadeImage.color = new Color(0, 0, 0, 0);
         fadeImage.DOFade(1f, 1f).OnComplete(() => SceneManager.LoadScene("TitleScene")).SetUpdate(true);
-    }
-
-    public void OnClickRetry()
-    {
-        SeManager.Instance.PlaySe("button");
-        fadeImage.color = new Color(0, 0, 0, 0);
-        fadeImage.DOFade(1f, 1f).OnComplete(() => SceneManager.LoadScene("MainScene")).SetUpdate(true);
-    }
-
-    public void OpenMap()
-    {
-        SeManager.Instance.PlaySe("button");
-        EnableCanvasGroup("Map", true);
-    }
-    
-    public void CloseMap()
-    {
-        SeManager.Instance.PlaySe("button");
-        EnableCanvasGroup("Map", false);
-    }
-    
-    private void SetVignette(float value)
-    {
-        if(!volume.profile.TryGet(out Vignette vignette)) return;
-        vignette.intensity.value = value;
     }
     
     private void Awake()
