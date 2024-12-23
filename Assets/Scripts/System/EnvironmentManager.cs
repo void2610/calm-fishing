@@ -10,21 +10,6 @@ using Random = UnityEngine.Random;
 public class EnvironmentManager : MonoBehaviour
 {
     public static EnvironmentManager Instance { get; private set; }
-    
-    public enum Weather
-    {
-        Sunny,
-        Cloudy,
-        Rainy,
-        Snowy
-    }
-    public enum TimePeriod
-    {
-        Dawn,
-        Noon,
-        Dusk,
-        Night
-    }
 
     [Header("設定")]
     [SerializeField] private Vector2 whetherInterval;

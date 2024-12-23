@@ -687,8 +687,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c37fbc9e24dc4db1907708f2bb55730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whetherInterval: {x: 3, y: 10}
-  dayLength: 24
+  whetherInterval: {x: 5, y: 15}
+  dayLength: 40
   cloudPrefab: {fileID: 6373195279663146553, guid: d15fae5ab7ada4a509f34c97b97888e0, type: 3}
   weatherText: {fileID: 120756525}
   timePeriodText: {fileID: 1331953442}
@@ -4776,9 +4776,9 @@ SceneRoots:
   - {fileID: 429108808}
   - {fileID: 1924790131}
   - {fileID: 1747048472}
+  - {fileID: 1638332491}
   - {fileID: 1995699523}
   - {fileID: 722298036}
   - {fileID: 195976296}
-  - {fileID: 1638332491}
   - {fileID: 115170555}
   - {fileID: 670743116}

@@ -1,6 +1,7 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using R3;
 
 namespace Fishing
 {
@@ -14,9 +15,17 @@ namespace Fishing
         [SerializeField] private float fishingTime;
         [SerializeField] private float fishingInterval;
         
+        private void ChangeFishingInterval(Weather weather)
+        {
+            fishingInterval = weather switch
+            {
+                Weather.Rainy => 10,
+                _ => 2
+            };
+        }
+        
         private async UniTaskVoid Fishing()
         {
-            // ゲームオブジェクトの破棄時にキャンセルされるトークンを取得
             var cancellationToken = this.GetCancellationTokenOnDestroy();
             
             while (true)
@@ -43,6 +52,8 @@ namespace Fishing
         {
             fishingGauge.material.SetFloat(RatioProperty, 1);
             Fishing().Forget();
+            
+            EnvironmentManager.Instance.CurrentWeather.AsObservable().Subscribe(ChangeFishingInterval).AddTo(this);
         } 
     }
 }
