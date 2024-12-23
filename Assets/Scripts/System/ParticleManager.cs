@@ -21,45 +21,8 @@ public class ParticleManager : MonoBehaviour
     [SerializeField] private GameObject damageTextPrefab;
     [SerializeField] private GameObject mergeTextPrefab;
     
-    private Canvas pixelCanvas => GameManager.Instance.pixelCanvas;
-    private Canvas uiCanvas => GameManager.Instance.uiCanvas;
-    
-    
-    public void HealParticle(Vector3 pos)
-    {
-        Instantiate(healParticlePrefab, pos, Quaternion.identity);
-    }
-    
-    public void HealParticleToPlayer()
-    {
-        var pos = new Vector3(-5.7f, 3.1f, 0);
-        Instantiate(healParticlePrefab, pos, Quaternion.identity);
-    }
-    
-    public void MergeParticle(Vector3 pos)
-    {
-        Instantiate(mergeParticle, pos, Quaternion.identity);
-    }
-    
-    public void MergePowerParticle(Vector3 pos, Color color)
-    {
-        var mpp = Instantiate(mergePowerParticle, pos, Quaternion.identity).GetComponent<MergePowerParticle>();
-        mpp.MoveTo(color);
-    }
-    
-    public void MergeText(int value, Vector3 pos, Color color = default)
-    {
-        var r = new Vector3(UnityEngine.Random.Range(-0.75f, 0.75f), UnityEngine.Random.Range(-0.75f, 0.75f), 0);
-        var mergeText = Instantiate(mergeTextPrefab, pos + r, Quaternion.identity, uiCanvas.transform);
-        if (color == default) color = Color.white;
-        mergeText.GetComponent<MergeText>().SetUp(value, color);
-    }
-    
-    public void DamageText(int value, float xPos)
-    {
-        var damageText = Instantiate(damageTextPrefab, uiCanvas.transform);
-        damageText.GetComponent<DamageText>().SetUp(value, xPos);
-    }
+    private Canvas PixelCanvas => GameManager.Instance.pixelCanvas;
+    private Canvas UICanvas => GameManager.Instance.uiCanvas;
     
     private void Awake()
     {

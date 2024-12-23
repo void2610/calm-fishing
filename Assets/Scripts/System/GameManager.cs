@@ -11,17 +11,6 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            if (PlayerPrefs.GetString("SeedText", "") == "")
-            {
-                _seed = (int)DateTime.Now.Ticks;
-                // Debug.Log("random seed: " + seed);
-            }
-            else
-            {
-                _seed = PlayerPrefs.GetInt("Seed", _seed);
-                // Debug.Log("fixed seed: " + seed);
-            }
-            _random = new System.Random(_seed);
             DOTween.SetTweensCapacity(tweenersCapacity: 800, sequencesCapacity: 800);
         }
         else
@@ -41,19 +30,6 @@ public class GameManager : MonoBehaviour
 
     private int _seed = 42;
     private bool _isPaused;
-    private System.Random _random;
-
-    public float RandomRange(float min, float max)
-    {
-        var randomValue = (float)(this._random.NextDouble() * (max - min) + min);
-        return randomValue;
-    }
-
-    public int RandomRange(int min, int max)
-    {
-        var randomValue = this._random.Next(min, max);
-        return randomValue;
-    }
 
     public void ChangeTimeScale()
     {

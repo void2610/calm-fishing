@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf6252bafbc1646ecaa6a1a4ef250f1e, type: 3}
   m_Name: Test2
   m_EditorClassIdentifier: 
-  id: 0
+  id: 1
   sprite: {fileID: 2289998852469363648, guid: 215687feeab0b7445b4a1cd86c82c2e1, type: 3}
   displayName: "\u30C6\u30B9\u30C82"
   description: "\u3060\u3088"
   rarity: 0
   price: 0
+  probability: 0.5

@@ -41,9 +41,21 @@ public class UIManager : MonoBehaviour
         }
     }
     
-    private void UpdateCoinText(int amount)
+    private void UpdateScoreText(int amount)
     {
-        coinText.text = "coin: " + amount.ToString();
+        coinText.text = "score: " + amount.ToString();
+    }
+    
+    public void OpenInventory()
+    {
+        SeManager.Instance.PlaySe("button");
+        EnableCanvasGroup("Inventory", true);
+    }
+    
+    public void CloseInventory()
+    {
+        SeManager.Instance.PlaySe("button");
+        EnableCanvasGroup("Inventory", false);
     }
     
     public void OnClickPause()
