@@ -33,6 +33,7 @@ namespace ScriptableObject
 
             // 検索結果をリストに追加
             list.Clear();
+            var id = 0;
             foreach (var guid in guids)
             {
                 var assetPath = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
@@ -40,6 +41,7 @@ namespace ScriptableObject
                 if (itemData != null)
                 {
                     list.Add(itemData);
+                    itemData.id = id++;
                 }
             }
 
