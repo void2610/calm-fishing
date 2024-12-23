@@ -1,30 +1,40 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
 
-public class Player : MonoBehaviour
+namespace Fishing
 {
-    private Rigidbody2D rb;
-    
-    private void Start()
+    public class Player : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
+        [SerializeField] private Vector2 moveInterval;
+        [SerializeField] private Vector2 moveDistance;
+        [SerializeField] private float moveSpeed;
+        [SerializeField] private Vector2 moveLimit;
 
-    private void Update()
-    {
-        // if (Input.GetKeyDown(KeyCode.Space)) gun.Play();
-        // else if (Input.GetKeyUp(KeyCode.Space)) gun.Stop();
-    }
-
-    private void FixedUpdate()
-    {
-        var move = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(move * 10, rb.velocity.y);
-        
-        if (Input.GetKeyDown(KeyCode.Space))
+        private void Start()
         {
-            rb.AddForce(Vector2.up * 500);
+            MoveRandomly().Forget();
+        }
+
+        private async UniTaskVoid MoveRandomly()
+        {
+            while (true)
+            {
+                // 次の移動までの待機
+                var waitTime = Random.Range(moveInterval.x, moveInterval.y);
+                await UniTask.Delay(System.TimeSpan.FromSeconds(waitTime));
+
+                var dis = Random.Range(moveDistance.x, moveDistance.y);
+                var dir = Random.value < 0.5f ? 1 : -1;
+                if (transform.position.x + dis * dir < moveLimit.x)
+                    dir = 1;
+                else if (transform.position.x + dis * dir > moveLimit.y)
+                    dir = -1;
+                var targetX = transform.position.x + dis * dir;
+
+                // DoTweenで移動
+                await transform.DOMoveX(targetX, dis / moveSpeed).SetEase(Ease.InOutQuad).ToUniTask();
+            }
         }
     }
 }
