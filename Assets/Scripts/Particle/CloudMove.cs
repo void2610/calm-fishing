@@ -5,9 +5,11 @@ namespace Particle
 {
     public class CloudMove : MonoBehaviour
     {
-        public void Init(Vector3 pos)
+        public void Init(Vector3 pos, float lifeTime = -1f)
         {
-            transform.DOMove(pos, 1f).SetEase(Ease.InOutSine);
+            if(lifeTime > 0f) Destroy(this.gameObject, lifeTime);
+            
+            transform.DOMove(pos, 3f).SetEase(Ease.InOutSine);
         }
     }
 }
