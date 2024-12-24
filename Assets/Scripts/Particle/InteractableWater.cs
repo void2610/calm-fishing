@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -9,6 +10,16 @@ namespace Particle
     [RequireComponent(typeof(WaterTriggerHandler))]
     public class InteractableWater : MonoBehaviour
     {
+        [Header("物理演算")]
+        [SerializeField] private float _springConstant = 1.4f;
+        [SerializeField] private float _damping = 1.1f;
+        [SerializeField] private float _spread = 6.5f;
+        [SerializeField, Range(1, 10)] private int _wavePropogationIterations = 3;
+        [SerializeField, Range(0f, 20f)] private float _speedMult = 5.5f;
+        public float ForceMultiplier = 0.2f;
+        [Range(1f, 50f)] public float MaxForce = 5f;
+        [SerializeField, Range(1f, 10f)] private float _playerCollisionRadiusMult = 4.15f;
+        
         [Header("メッシュ")]
         [Range(2, 500)] public int NumOfXVertices = 70;
         public float Width = 10;
@@ -23,6 +34,12 @@ namespace Particle
         private int[] _topVerticesIndex;
 
         private EdgeCollider2D _coll;
+
+        private class WaterPoint
+        {
+            public float velocity, acceleration, pos, targetHeight;
+        }
+        private List<WaterPoint> _waterPoints = new ();
 
         private void Reset()
         {
@@ -104,10 +121,73 @@ namespace Particle
             _mesh.RecalculateBounds();
             _meshFilter.mesh = _mesh;
         }
+        
+        private void CreateWaterPoints()
+        {
+            _waterPoints.Clear();
+            for (var i = 0; i < _topVerticesIndex.Length; i++)
+            {
+                _waterPoints.Add(new WaterPoint
+                {
+                    pos = _vertices[_topVerticesIndex[i]].y,
+                    targetHeight = _vertices[_topVerticesIndex[i]].y
+                });
+            }
+        }
+        
+        public void Splash(Collider2D collision, float force)
+        {
+            var radius = collision.bounds.extents.x * _playerCollisionRadiusMult;
+            var center = collision.transform.position;
+            
+            for (var i = 0; i < _waterPoints.Count; i++)
+            {
+                var vertexWorldPos = transform.TransformPoint(_vertices[_topVerticesIndex[i]]);
+                if (IsPointInsideCircle(vertexWorldPos, center, radius))
+                {
+                    _waterPoints[i].velocity = force;
+                }
+            }
+        }
+        
+        private bool IsPointInsideCircle(Vector2 point, Vector2 center, float radius)
+        {
+            var dis = (point - center).sqrMagnitude;
+            return dis <= radius * radius;
+        }
 
         private void Start()
         {
+            _coll = GetComponent<EdgeCollider2D>();
             GenerateMesh();
+            CreateWaterPoints();
+        }
+        
+        private void FixedUpdate()
+        {
+            for(var i = 1; i < _waterPoints.Count -1; i++)
+            {
+                var point = _waterPoints[i];
+                var x = point.pos - point.targetHeight;
+                var acceleration = -_springConstant * x - _damping * point.velocity;
+                
+                point.pos += point.velocity * _speedMult * Time.fixedDeltaTime;
+                _vertices[_topVerticesIndex[i]].y = point.pos;
+                point.velocity += acceleration * _speedMult * Time.fixedDeltaTime;
+            }
+            
+            for(var j = 0; j < _wavePropogationIterations; j++)
+            {
+                for(var i = 1; i < _waterPoints.Count - 1; i++)
+                {
+                    var leftDelta = _spread * (_waterPoints[i].pos - _waterPoints[i + 1].pos) * _speedMult * Time.fixedDeltaTime;
+                    _waterPoints[i - 1].velocity += leftDelta;
+                    var rightDelta = _spread * (_waterPoints[i].pos - _waterPoints[i - 1].pos) * _speedMult * Time.fixedDeltaTime;
+                    _waterPoints[i + 1].velocity += rightDelta;
+                }
+            }
+            
+            _mesh.vertices = _vertices;
         }
     }
 
