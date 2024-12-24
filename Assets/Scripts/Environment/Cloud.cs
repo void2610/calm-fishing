@@ -1,8 +1,8 @@
-using System.Linq;
-using UnityEngine;
 using DG.Tweening;
+using Particle;
+using UnityEngine;
 
-namespace Particle
+namespace Environment
 {
     public class Cloud : MonoBehaviour
     {

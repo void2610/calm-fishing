@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace Particle
+namespace Environment
 {
     public class WaterTriggerHandler : MonoBehaviour
     {
