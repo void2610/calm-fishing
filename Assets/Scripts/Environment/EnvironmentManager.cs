@@ -20,6 +20,7 @@ namespace Environment
         [Header("オブジェクト")]
         [SerializeField] private InteractableWater water;
         [SerializeField] private GameObject cloudPrefab;
+        [SerializeField] private BackGround backGround;
     
         [Header("デバッグ")]
         [SerializeField] private TextMeshProUGUI weatherText;
@@ -62,6 +63,7 @@ namespace Environment
                 await UniTask.Delay(TimeSpan.FromSeconds(dayLength / 4), cancellationToken: cancellationToken);
             
                 var timePeriod = (TimePeriod)(((int)_timePeriod.Value + 1) % 4);
+                backGround.StartTween((int)_timePeriod.Value);
                 _timePeriod.Value = timePeriod;
                 timePeriodText.text = timePeriod.ToString();
             }
