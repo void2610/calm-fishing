@@ -150,6 +150,17 @@ namespace Particle
             }
         }
         
+        public void PointSplash(Vector3 pos, float radius, float force)
+        {
+            for (var i = 0; i < _waterPoints.Count; i++)
+            {
+                var vertexWorldPos = transform.TransformPoint(_vertices[_topVerticesIndex[i]]);
+                if (IsPointInsideCircle(vertexWorldPos, pos, radius))
+                {
+                    _waterPoints[i].velocity = force;
+                }
+            }
+        }
         private bool IsPointInsideCircle(Vector2 point, Vector2 center, float radius)
         {
             var dis = (point - center).sqrMagnitude;
