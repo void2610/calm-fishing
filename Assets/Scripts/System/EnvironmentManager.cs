@@ -16,6 +16,7 @@ public class EnvironmentManager : MonoBehaviour
     [SerializeField] private float dayLength;
     
     [Header("オブジェクト")]
+    [SerializeField] private InteractableWater water;
     [SerializeField] private GameObject cloudPrefab;
     
     [Header("デバッグ")]
@@ -71,7 +72,7 @@ public class EnvironmentManager : MonoBehaviour
             var cloud = Instantiate(cloudPrefab, new Vector3(10, 4, 0), Quaternion.identity, this.transform);
             var pos = new Vector3(Random.Range(-8, 8), 4, 0);
             var lifeTime = Random.Range(5, 10);
-            cloud.GetComponent<CloudMove>().Init(pos, lifeTime);
+            cloud.GetComponent<Cloud>().Init(pos, water, lifeTime);
             
             await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(5, 10)), cancellationToken: cancellationToken);
         }
@@ -92,9 +93,10 @@ public class EnvironmentManager : MonoBehaviour
         
         ChangeWeather().Forget();
         ChangeTimePeriod().Forget();
-    }
 
-    private void Update()
-    {
+        var cloud = Instantiate(cloudPrefab, new Vector3(10, 4, 0), Quaternion.identity, this.transform);
+        var pos = new Vector3(Random.Range(-8, 8), 4, 0);
+        var lifeTime = Random.Range(5, 10);
+        cloud.GetComponent<Cloud>().Init(pos, water, lifeTime);
     }
 }
