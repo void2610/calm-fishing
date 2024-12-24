@@ -18,7 +18,6 @@ namespace Particle
     
         private void OnParticleTrigger()
         {
-            Debug.Log("RainCollider.OnParticleTrigger");
             // トリガー内のパーティクルを取得
             var particles = new ParticleSystem.Particle[_rain.particleCount].ToList();
             var numInside = _rain.GetTriggerParticles(ParticleSystemTriggerEventType.Enter, particles);
