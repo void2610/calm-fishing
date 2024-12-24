@@ -39,8 +39,6 @@ namespace Environment
 
             while (true)
             {
-                await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(whetherInterval.x, whetherInterval.y)), cancellationToken: objectCancellationToken);
-            
                 var weather = (Weather)Random.Range(0, 4);
                 _weather.Value = weather;
                 weatherText.text = weather.ToString();
@@ -51,6 +49,8 @@ namespace Environment
                 {
                     CreateCloud(weatherCancellationToken.Token).Forget();
                 }
+                
+                await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(whetherInterval.x, whetherInterval.y)), cancellationToken: objectCancellationToken);
             }
         }
     
@@ -60,12 +60,12 @@ namespace Environment
 
             while (true)
             {
-                await UniTask.Delay(TimeSpan.FromSeconds(dayLength / 4), cancellationToken: cancellationToken);
-            
                 var timePeriod = (TimePeriod)(((int)_timePeriod.Value + 1) % 4);
-                backGround.StartTween((int)_timePeriod.Value);
+                backGround.StartTween((int)_timePeriod.Value + 1);
                 _timePeriod.Value = timePeriod;
                 timePeriodText.text = timePeriod.ToString();
+                
+                await UniTask.Delay(TimeSpan.FromSeconds(dayLength / 4), cancellationToken: cancellationToken);
             }
         }
     
@@ -91,7 +91,7 @@ namespace Environment
         private void Start()
         {
             _weather.Value = Weather.Sunny;
-            _timePeriod.Value = TimePeriod.Dawn;
+            _timePeriod.Value = TimePeriod.Night;
             weatherText.text = _weather.Value.ToString();
             timePeriodText.text = _timePeriod.Value.ToString();
         

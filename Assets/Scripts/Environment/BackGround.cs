@@ -29,17 +29,20 @@ namespace Environment
         [SerializeField] private List<TimeColor> timeColors;
         [SerializeField] private Material material;
         [SerializeField] private Volume volume;
-        [SerializeField] private float dayTime;
+        [SerializeField] private float dayLength;
         
         private int _timePeriod;
         
         public void StartTween(int timePeriod){
-            DOTween.To(() => 0f, (t) => Gradation(timePeriod, t), 1f, dayTime/4)
+            // グラデーションが1回しか呼ばれない
+            DOTween.To(() => 0f, (t) => Gradation(timePeriod, t), 1f, dayLength / 4)
                 .OnComplete(() => _timePeriod = timePeriod);
         }
 
         private void Gradation(int next, float t)
         {
+            Debug.Log("Gradation");
+            
             var color1 = Color.Lerp(timeColors[_timePeriod].colors[0], timeColors[next].colors[0], t);
             var color2 = Color.Lerp(timeColors[_timePeriod].colors[1], timeColors[next].colors[1], t);
             var color3 = Color.Lerp(timeColors[_timePeriod].colors[2], timeColors[next].colors[2], t);
