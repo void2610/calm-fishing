@@ -11,5 +11,6 @@ namespace ScriptableObject
         public string description;
         public Rarity rarity;
         public int price;
+        public float probability;
     }
 }
