@@ -32,6 +32,7 @@ public class TitleMenu : MonoBehaviour
             await UniTask.Delay(50);
         }
         await UniTask.Delay(1500);
+        EnableCanvasGroup(_titleCanvasGroup, false);
         
         // ゲーム内UIを表示
         foreach (var ui in moveInUIs)

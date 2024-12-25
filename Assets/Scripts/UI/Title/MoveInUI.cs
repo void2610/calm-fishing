@@ -1,7 +1,6 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.UIElements;
 
 public class MoveInUI : MonoBehaviour
 {
@@ -16,16 +15,19 @@ public class MoveInUI : MonoBehaviour
     [SerializeField] private Direction direction;
     [SerializeField] private float distance;
     [SerializeField] private float time;
-    
-    private Vector3 _moveVector;
+
+    private Vector2 _moveVector;
+    private RectTransform _rectTransform;
 
     public void StartMove()
     {
-        this.transform.DOMove(_moveVector, time).SetEase(Ease.Unset).SetRelative();
+        _rectTransform.DOAnchorPos(_moveVector, time).SetEase(Ease.Unset).SetRelative();
     }
 
     private void Awake()
     {
+        _rectTransform = GetComponent<RectTransform>();
+
         var dir = direction switch
         {
             Direction.Up => Vector2.up,
@@ -34,8 +36,8 @@ public class MoveInUI : MonoBehaviour
             Direction.Right => Vector2.right,
             _ => Vector2.zero
         };
-        
-        transform.localPosition -= (Vector3)dir * distance;
-        _moveVector = (Vector3)dir * distance;
+
+        _rectTransform.anchoredPosition -= dir * distance;
+        _moveVector = dir * distance;
     }
 }
