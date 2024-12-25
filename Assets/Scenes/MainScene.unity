@@ -800,7 +800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: af515ef3-f896-4abf-80b8-0ab3bc46b877
+    _value: da5586d1-de6e-4cbb-b9cd-c7d968961cda
   _component: {fileID: 120756525}
 --- !u!114 &120756525
 MonoBehaviour:
@@ -831,8 +831,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4291611852
-  m_fontColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -988,6 +988,7 @@ GameObject:
   - component: {fileID: 195976295}
   - component: {fileID: 195976297}
   - component: {fileID: 195976298}
+  - component: {fileID: 195976299}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1057,6 +1058,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c9b15fc4789e42bbb9273ab02d8e5e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &195976299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195976294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ccf73d461f5241baa67416d537c6fc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &248173029
@@ -1427,6 +1440,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4336439062694548224, guid: 00ae2bf8c8a624ed38161cab9eeda7f7, type: 3}
+      propertyPath: HmacKey
+      value: BUjSguhZRdPqrROCtNGsqzPEMBMnD4OONuG2qP4eaV3ZAkuDXbxij6VMHRpoeG2GTXdyKTyr8XjyoxgQgmzZZg==
+      objectReference: {fileID: 0}
     - target: {fileID: 5323818951622561360, guid: 00ae2bf8c8a624ed38161cab9eeda7f7, type: 3}
       propertyPath: m_Name
       value: UnityroomApiClient
@@ -1663,6 +1680,7 @@ GameObject:
   - component: {fileID: 528488196}
   - component: {fileID: 528488198}
   - component: {fileID: 528488197}
+  - component: {fileID: 528488199}
   m_Layer: 5
   m_Name: BGFrame
   m_TagString: Untagged
@@ -1702,7 +1720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  m_Color: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1727,6 +1745,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 528488195}
   m_CullTransparentMesh: 1
+--- !u!114 &528488199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528488195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6e1d633c6a85e040a3eeb66ccca5432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _entryId:
+    _value: 67a15a00-025f-4e18-87b6-d3c754d33290
+  _component: {fileID: 528488197}
 --- !u!1 &578042017
 GameObject:
   m_ObjectHideFlags: 0
@@ -2240,7 +2273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: af515ef3-f896-4abf-80b8-0ab3bc46b877
+    _value: da5586d1-de6e-4cbb-b9cd-c7d968961cda
   _component: {fileID: 893308935}
 --- !u!114 &893308935
 MonoBehaviour:
@@ -2271,8 +2304,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4291611852
-  m_fontColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2395,7 +2428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: a4a97bfe-89a3-46d8-86dd-bd692b94adb3
+    _value: afaf23d6-62c4-45e9-aa73-c0219b5379ad
   _component: {fileID: 894068382}
 --- !u!114 &894068380
 MonoBehaviour:
@@ -2484,7 +2517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2592,7 +2625,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 173783975}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999711
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2667,7 +2700,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0000013075769}
+  m_AnchoredPosition: {x: 0, y: -0.000004109516}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &985969108
@@ -2870,171 +2903,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!43 &1126399971
-Mesh:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 11
-  m_SubMeshes:
-  - serializedVersion: 2
-    firstByte: 0
-    indexCount: 36
-    topology: 0
-    baseVertex: 0
-    firstVertex: 0
-    vertexCount: 20
-    localAABB:
-      m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.44999695, y: 0.44999695, z: 0}
-  m_Shapes:
-    vertices: []
-    shapes: []
-    channels: []
-    fullWeights: []
-  m_BindPose: []
-  m_BoneNameHashes: 
-  m_RootBoneNameHash: 0
-  m_BonesAABB: []
-  m_VariableBoneCountWeights:
-    m_Data: 
-  m_MeshCompression: 0
-  m_IsReadable: 1
-  m_KeepVertices: 1
-  m_KeepIndices: 1
-  m_IndexFormat: 0
-  m_IndexBuffer: 00000400050005000100000001000800090009000200010002000c000d000d000300020003001000110011000000030000000600070001000a000b0002000e000f00030012001300
-  m_VertexData:
-    serializedVersion: 3
-    m_VertexCount: 20
-    m_Channels:
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 12
-      format: 0
-      dimension: 4
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    m_DataSize: 560
-    _typelessdata: 0066e63e0066e63e00000000000080bf000000000066e6be0066e63e0066e6be0066e63e00000000000080bf000000000066e6be0066e6be0066e6be0066e6be00000000000080bf000000000066e63e0066e6be0066e63e0066e6be00000000000080bf000000000066e63e0066e63e0066e63e0066e63e0000000000000000000000000066e6be0066e63e0066e6be0066e63e0000000000000000000000000066e63e0066e63e0066e63e0066e63e000000000000803f000000000066e6be0066e63e0066e63e0066e63e0000000000004040000000000066e6be0066e63e0066e6be0066e63e0000000000000000000000000066e6be0066e6be0066e6be0066e6be0000000000000000000000000066e6be0066e63e0066e6be0066e63e000000000000803f000000000066e6be0066e6be0066e6be0066e63e0000000000004040000000000066e6be0066e6be0066e6be0066e6be0000000000000000000000000066e63e0066e6be0066e63e0066e6be0000000000000000000000000066e6be0066e6be0066e6be0066e6be000000000000803f000000000066e63e0066e6be0066e6be0066e6be0000000000004040000000000066e63e0066e6be0066e63e0066e6be0000000000000000000000000066e63e0066e63e0066e63e0066e63e0000000000000000000000000066e63e0066e6be0066e63e0066e6be000000000000803f000000000066e63e0066e63e0066e63e0066e6be0000000000004040000000000066e63e0066e63e
-  m_CompressedMesh:
-    m_Vertices:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UV:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Normals:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Tangents:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Weights:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_NormalSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_TangentSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_FloatColors:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_BoneIndices:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Triangles:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UVInfo: 0
-  m_LocalAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
-  m_MeshUsageFlags: 0
-  m_CookingOptions: 30
-  m_BakedConvexCollisionMesh: 
-  m_BakedTriangleCollisionMesh: 
-  'm_MeshMetrics[0]': 1
-  'm_MeshMetrics[1]': 1
-  m_MeshOptimizationFlags: 1
-  m_StreamData:
-    serializedVersion: 2
-    offset: 0
-    size: 0
-    path: 
 --- !u!1 &1321667597
 GameObject:
   m_ObjectHideFlags: 0
@@ -3086,7 +2954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: af515ef3-f896-4abf-80b8-0ab3bc46b877
+    _value: da5586d1-de6e-4cbb-b9cd-c7d968961cda
   _component: {fileID: 1321667600}
 --- !u!114 &1321667600
 MonoBehaviour:
@@ -3117,8 +2985,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4291611852
-  m_fontColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3238,7 +3106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: af515ef3-f896-4abf-80b8-0ab3bc46b877
+    _value: da5586d1-de6e-4cbb-b9cd-c7d968961cda
   _component: {fileID: 1331953442}
 --- !u!114 &1331953442
 MonoBehaviour:
@@ -3269,8 +3137,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4291611852
-  m_fontColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3774,7 +3642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: af515ef3-f896-4abf-80b8-0ab3bc46b877
+    _value: da5586d1-de6e-4cbb-b9cd-c7d968961cda
   _component: {fileID: 1621302524}
 --- !u!114 &1621302524
 MonoBehaviour:
@@ -3789,7 +3657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3971,7 +3839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: af515ef3-f896-4abf-80b8-0ab3bc46b877
+    _value: da5586d1-de6e-4cbb-b9cd-c7d968961cda
   _component: {fileID: 1653424816}
 --- !u!114 &1653424816
 MonoBehaviour:
@@ -4002,8 +3870,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4291611852
-  m_fontColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4247,7 +4115,7 @@ MonoBehaviour:
     rid: 8457818921835167835
   m_ShadowCastingSource: 2
   m_ShadowMesh:
-    m_Mesh: {fileID: 1126399971}
+    m_Mesh: {fileID: 2119930397}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
       m_Extent: {x: 0.44999695, y: 0.44999695, z: 0}
@@ -4494,6 +4362,7 @@ GameObject:
   - component: {fileID: 2027350568}
   - component: {fileID: 2027350570}
   - component: {fileID: 2027350569}
+  - component: {fileID: 2027350571}
   m_Layer: 5
   m_Name: DetailPanel
   m_TagString: Untagged
@@ -4536,7 +4405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  m_Color: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4561,6 +4430,186 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027350567}
   m_CullTransparentMesh: 1
+--- !u!114 &2027350571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027350567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6e1d633c6a85e040a3eeb66ccca5432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _entryId:
+    _value: 67a15a00-025f-4e18-87b6-d3c754d33290
+  _component: {fileID: 2027350569}
+--- !u!43 &2119930397
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 11
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 36
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 20
+    localAABB:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.44999695, y: 0.44999695, z: 0}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_BonesAABB: []
+  m_VariableBoneCountWeights:
+    m_Data: 
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 00000400050005000100000001000800090009000200010002000c000d000d000300020003001000110011000000030000000600070001000a000b0002000e000f00030012001300
+  m_VertexData:
+    serializedVersion: 3
+    m_VertexCount: 20
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 560
+    _typelessdata: 0066e63e0066e63e00000000000080bf000000000066e6be0066e63e0066e6be0066e63e00000000000080bf000000000066e6be0066e6be0066e6be0066e6be00000000000080bf000000000066e63e0066e6be0066e63e0066e6be00000000000080bf000000000066e63e0066e63e0066e63e0066e63e0000000000000000000000000066e6be0066e63e0066e6be0066e63e0000000000000000000000000066e63e0066e63e0066e63e0066e63e000000000000803f000000000066e6be0066e63e0066e63e0066e63e0000000000004040000000000066e6be0066e63e0066e6be0066e63e0000000000000000000000000066e6be0066e6be0066e6be0066e6be0000000000000000000000000066e6be0066e63e0066e6be0066e63e000000000000803f000000000066e6be0066e6be0066e6be0066e63e0000000000004040000000000066e6be0066e6be0066e6be0066e6be0000000000000000000000000066e63e0066e6be0066e63e0066e6be0000000000000000000000000066e6be0066e6be0066e6be0066e6be000000000000803f000000000066e63e0066e6be0066e6be0066e6be0000000000004040000000000066e63e0066e6be0066e63e0066e6be0000000000000000000000000066e63e0066e63e0066e63e0066e63e0000000000000000000000000066e63e0066e6be0066e63e0066e6be000000000000803f000000000066e63e0066e63e0066e63e0066e6be0000000000004040000000000066e63e0066e63e
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_MeshUsageFlags: 0
+  m_CookingOptions: 30
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  'm_MeshMetrics[0]': 1
+  'm_MeshMetrics[1]': 1
+  m_MeshOptimizationFlags: 1
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
 --- !u!1 &2135165492
 GameObject:
   m_ObjectHideFlags: 0
@@ -4980,7 +5029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: af515ef3-f896-4abf-80b8-0ab3bc46b877
+    _value: da5586d1-de6e-4cbb-b9cd-c7d968961cda
   _component: {fileID: 6826638645948989896}
 --- !u!1 &495371401140153717
 GameObject:
@@ -5103,7 +5152,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4291611852
-  m_fontColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5286,6 +5335,7 @@ GameObject:
   - component: {fileID: 291365991334277790}
   - component: {fileID: 4221882623611800202}
   - component: {fileID: 8185902681649110170}
+  - component: {fileID: 8185902681649110171}
   m_Layer: 5
   m_Name: BGFrame
   m_TagString: Untagged
@@ -5409,7 +5459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: af515ef3-f896-4abf-80b8-0ab3bc46b877
+    _value: da5586d1-de6e-4cbb-b9cd-c7d968961cda
   _component: {fileID: 1424725885002944193}
 --- !u!114 &1347224192407368009
 MonoBehaviour:
@@ -5468,7 +5518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5572,7 +5622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: a4a97bfe-89a3-46d8-86dd-bd692b94adb3
+    _value: afaf23d6-62c4-45e9-aa73-c0219b5379ad
   _component: {fileID: 6760286420218626529}
 --- !u!224 &1571544569346660381
 RectTransform:
@@ -5915,7 +5965,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4291611852
-  m_fontColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5989,7 +6039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: 08bdf8f5-274e-41e3-9fb0-10254636975e
+    _value: afaf23d6-62c4-45e9-aa73-c0219b5379ad
   _component: {fileID: 8550230888769782996}
 --- !u!114 &2115024924189901399
 MonoBehaviour:
@@ -6168,7 +6218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: af515ef3-f896-4abf-80b8-0ab3bc46b877
+    _value: da5586d1-de6e-4cbb-b9cd-c7d968961cda
   _component: {fileID: 5817166872353209860}
 --- !u!114 &2237998319078570014
 MonoBehaviour:
@@ -6328,7 +6378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: a4a97bfe-89a3-46d8-86dd-bd692b94adb3
+    _value: afaf23d6-62c4-45e9-aa73-c0219b5379ad
   _component: {fileID: 8518302999334283182}
 --- !u!114 &2584394671365122116
 MonoBehaviour:
@@ -6434,7 +6484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6921,7 +6971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: af515ef3-f896-4abf-80b8-0ab3bc46b877
+    _value: da5586d1-de6e-4cbb-b9cd-c7d968961cda
   _component: {fileID: 8279193134261827940}
 --- !u!224 &3237351527639152444
 RectTransform:
@@ -7573,7 +7623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: af515ef3-f896-4abf-80b8-0ab3bc46b877
+    _value: da5586d1-de6e-4cbb-b9cd-c7d968961cda
   _component: {fileID: 727015980303935576}
 --- !u!222 &4221882623611800202
 CanvasRenderer:
@@ -8294,7 +8344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8572,7 +8622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8678,7 +8728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: af515ef3-f896-4abf-80b8-0ab3bc46b877
+    _value: da5586d1-de6e-4cbb-b9cd-c7d968961cda
   _component: {fileID: 8894053697348658123}
 --- !u!222 &6161903844633288217
 CanvasRenderer:
@@ -8789,7 +8839,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3645717691301212111}
   m_Direction: 2
   m_Value: -0.00000003590303
-  m_Size: 0.29166666
+  m_Size: 0.29165822
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9080,8 +9130,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4291611852
-  m_fontColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -9163,7 +9213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: af515ef3-f896-4abf-80b8-0ab3bc46b877
+    _value: da5586d1-de6e-4cbb-b9cd-c7d968961cda
   _component: {fileID: 6567279094729312454}
 --- !u!1 &6668393437985555599
 GameObject:
@@ -9228,7 +9278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9258,7 +9308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9307,7 +9357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: af515ef3-f896-4abf-80b8-0ab3bc46b877
+    _value: da5586d1-de6e-4cbb-b9cd-c7d968961cda
   _component: {fileID: 9156377684674010536}
 --- !u!114 &6826638645948989896
 MonoBehaviour:
@@ -9322,7 +9372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9442,7 +9492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: 08bdf8f5-274e-41e3-9fb0-10254636975e
+    _value: afaf23d6-62c4-45e9-aa73-c0219b5379ad
   _component: {fileID: 7471985727148582566}
 --- !u!222 &7178590563228818597
 CanvasRenderer:
@@ -9531,7 +9581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: af515ef3-f896-4abf-80b8-0ab3bc46b877
+    _value: da5586d1-de6e-4cbb-b9cd-c7d968961cda
   _component: {fileID: 2587015832664273944}
 --- !u!1 &7338707392509077687
 GameObject:
@@ -9607,7 +9657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
+  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10101,7 +10151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+  m_Color: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10118,6 +10168,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 2.5
+--- !u!114 &8185902681649110171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927484749545473972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6e1d633c6a85e040a3eeb66ccca5432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _entryId:
+    _value: 67a15a00-025f-4e18-87b6-d3c754d33290
+  _component: {fileID: 8185902681649110170}
 --- !u!1 &8189483856722969668
 GameObject:
   m_ObjectHideFlags: 0
@@ -10471,8 +10536,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4291611852
-  m_fontColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -10683,7 +10748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: a4a97bfe-89a3-46d8-86dd-bd692b94adb3
+    _value: afaf23d6-62c4-45e9-aa73-c0219b5379ad
   _component: {fileID: 5475799471922785017}
 --- !u!1 &8411929608759071742
 GameObject:
@@ -10761,7 +10826,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 850.00006}
+  m_AnchoredPosition: {x: 0, y: 850}
   m_SizeDelta: {x: 0, y: 1200}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8518302999334283182
@@ -10777,7 +10842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10839,7 +10904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
+  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11068,7 +11133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: a4a97bfe-89a3-46d8-86dd-bd692b94adb3
+    _value: afaf23d6-62c4-45e9-aa73-c0219b5379ad
   _component: {fileID: 6726979164736766546}
 --- !u!1 &8872782267358996725
 GameObject:
@@ -11103,7 +11168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryId:
-    _value: af515ef3-f896-4abf-80b8-0ab3bc46b877
+    _value: da5586d1-de6e-4cbb-b9cd-c7d968961cda
   _component: {fileID: 2034025162117055296}
 --- !u!114 &8894053697348658123
 MonoBehaviour:
@@ -11134,8 +11199,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4291611852
-  m_fontColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -11413,8 +11478,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4291611852
-  m_fontColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

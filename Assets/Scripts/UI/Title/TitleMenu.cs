@@ -103,5 +103,7 @@ public class TitleMenu : MonoBehaviour
         _titleCanvasGroup.DOFade(1f, 3f).OnComplete(
             () => EnableCanvasGroup(_titleCanvasGroup, true)
         );
+        
+        Debug.Log("TitleMenu.cs is loaded.");
     }
 }
