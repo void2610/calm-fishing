@@ -61,7 +61,6 @@ namespace Environment
             while (true)
             {
                 var timePeriod = (TimePeriod)(((int)_timePeriod.Value + 1) % 4);
-                backGround.StartTween((int)_timePeriod.Value + 1);
                 _timePeriod.Value = timePeriod;
                 timePeriodText.text = timePeriod.ToString();
                 
