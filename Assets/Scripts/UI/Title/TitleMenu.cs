@@ -11,6 +11,7 @@ public class TitleMenu : MonoBehaviour
     [SerializeField] private CanvasGroup license;
     
     [SerializeField] private List<MoveUpUI> moveUpUIs;
+    [SerializeField] private List<MoveInUI> moveInUIs;
     
     private CanvasGroup _titleCanvasGroup;
     
@@ -33,7 +34,12 @@ public class TitleMenu : MonoBehaviour
         await UniTask.Delay(1500);
         
         // ゲーム内UIを表示
-        await inGameUI.DOFade(1.0f, 1.0f).ToUniTask();
+        foreach (var ui in moveInUIs)
+        {
+            ui.StartMove();
+            // await UniTask.Delay(50);
+        }
+        await UniTask.Delay(1500);
         
         inGameUI.interactable = true;
         inGameUI.blocksRaycasts = true;
@@ -105,7 +111,7 @@ public class TitleMenu : MonoBehaviour
         HideCredit();
         HideLicense();
         
-        EnableCanvasGroup(inGameUI, false);
+        // EnableCanvasGroup(inGameUI, false);
         EnableCanvasGroup(_titleCanvasGroup, false);
         
         _titleCanvasGroup.DOFade(1f, 3f).OnComplete(
