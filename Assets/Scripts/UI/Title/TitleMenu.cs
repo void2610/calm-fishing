@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,8 @@ public class TitleMenu : MonoBehaviour
     [SerializeField] private CanvasGroup inGameUI;
     [SerializeField] private CanvasGroup credit;
     [SerializeField] private CanvasGroup license;
+    
+    [SerializeField] private List<MoveUpUI> moveUpUIs;
     
     private CanvasGroup _titleCanvasGroup;
     
@@ -22,7 +25,12 @@ public class TitleMenu : MonoBehaviour
         this.GetComponent<CanvasGroup>().interactable = false;
         
         // タイトルUIを非表示
-        await this.transform.DOMoveY(580, 2.5f).SetRelative().SetEase(Ease.InBack).ToUniTask();
+        foreach (var ui in moveUpUIs)
+        {
+            ui.StartMoveUp();
+            await UniTask.Delay(50);
+        }
+        await UniTask.Delay(1500);
         
         // ゲーム内UIを表示
         await inGameUI.DOFade(1.0f, 1.0f).ToUniTask();
