@@ -1,33 +1,34 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using DG.Tweening;
-using TMPro;
 
 public class TitleMenu : MonoBehaviour
 {
-    [SerializeField]
-    private Image fadeImage;
-    [SerializeField]
-    private Slider bgmSlider;
-    [SerializeField]
-    private Slider seSlider;
-    [SerializeField]
-    private TMP_InputField seedInputField;
-    [SerializeField]
-    private CanvasGroup credit;
-    [SerializeField]
-    private CanvasGroup license;
-
+    [SerializeField] private CanvasGroup inGameUI;
+    [SerializeField] private CanvasGroup credit;
+    [SerializeField] private CanvasGroup license;
+    
+    private CanvasGroup _titleCanvasGroup;
+    
     public void StartGame()
     {
+        StartGameAsync().Forget();
+    }
+
+    private async UniTaskVoid StartGameAsync()
+    {
         SeManager.Instance.PlaySe("button");
-        fadeImage.color = new Color(0, 0, 0, 0);
-        fadeImage.DOFade(1.0f, 1.0f).OnComplete(() =>
-        {
-            SceneManager.LoadScene("MainScene");
-        });
+        this.GetComponent<CanvasGroup>().interactable = false;
+        
+        // タイトルUIを非表示
+        await this.transform.DOMoveY(580, 2.5f).SetRelative().SetEase(Ease.InBack).ToUniTask();
+        
+        // ゲーム内UIを表示
+        await inGameUI.DOFade(1.0f, 1.0f).ToUniTask();
+        
+        inGameUI.interactable = true;
+        inGameUI.blocksRaycasts = true;
     }
 
     public void ShowCredit()
@@ -62,72 +63,45 @@ public class TitleMenu : MonoBehaviour
         license.blocksRaycasts = false;
     }
 
-    public void PlayButtonSe()
+    public static void PlayButtonSe()
     {
         if (Time.time > 0.5f)
             SeManager.Instance.PlaySe("button");
     }
 
-    private void InitPlayerPrefs()
+    private static void InitPlayerPrefs()
     {
         PlayerPrefs.SetFloat("BgmVolume", 1.0f);
         PlayerPrefs.SetFloat("SeVolume", 1.0f);
-
-        PlayerPrefs.SetInt("Seed", 0);
-        PlayerPrefs.SetString("SeedText", "");
     }
 
     public void ResetSetting()
     {
         PlayerPrefs.SetFloat("BgmVolume", 1.0f);
         PlayerPrefs.SetFloat("SeVolume", 1.0f);
-        bgmSlider.value = 1.0f;
-        seSlider.value = 1.0f;
+    }
+    
+    private void EnableCanvasGroup(CanvasGroup canvasGroup, bool e)
+    {
+        canvasGroup.alpha = e ? 1.0f : 0.0f;
+        canvasGroup.interactable = e;
+        canvasGroup.blocksRaycasts = e;
     }
 
-    void Awake()
+    private void Awake()
     {
+        if (!PlayerPrefs.HasKey("BgmVolume")) InitPlayerPrefs();
+        _titleCanvasGroup = this.GetComponent<CanvasGroup>();
+
+        Time.timeScale = 1.0f;
         HideCredit();
         HideLicense();
-        if (!PlayerPrefs.HasKey("BgmVolume")) InitPlayerPrefs();
-    }
-
-    void Start()
-    {
-        bgmSlider.value = PlayerPrefs.GetFloat("BgmVolume", 1.0f);
-        seSlider.value = PlayerPrefs.GetFloat("SeVolume", 1.0f);
-
-        seedInputField.text = PlayerPrefs.GetString("SeedText", "");
-
-        bgmSlider.onValueChanged.AddListener((value) =>
-        {
-            BgmManager.Instance.BgmVolume = value;
-        });
-
-        seSlider.onValueChanged.AddListener((value) =>
-        {
-            SeManager.Instance.seVolume = value;
-        });
-
-        var trigger = seSlider.gameObject.AddComponent<EventTrigger>();
-        var entry = new EventTrigger.Entry();
-        entry.eventID = EventTriggerType.PointerUp;
-        entry.callback.AddListener(new UnityEngine.Events.UnityAction<BaseEventData>((data) =>
-        {
-            SeManager.Instance.PlaySe("button");
-        }));
-        trigger.triggers.Add(entry);
         
-        Time.timeScale = 1.0f;
-
-        fadeImage.color = new Color(0, 0, 0, 1);
-        fadeImage.DOFade(0.0f, 1.0f);
-    }
-
-    void Update()
-    {
-        int seed = seedInputField.text.GetHashCode();
-        PlayerPrefs.SetInt("Seed", seed);
-        PlayerPrefs.SetString("SeedText", seedInputField.text);
+        EnableCanvasGroup(inGameUI, false);
+        EnableCanvasGroup(_titleCanvasGroup, false);
+        
+        _titleCanvasGroup.DOFade(1f, 3f).OnComplete(
+            () => EnableCanvasGroup(_titleCanvasGroup, true)
+        );
     }
 }
