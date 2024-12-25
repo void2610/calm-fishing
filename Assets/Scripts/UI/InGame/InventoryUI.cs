@@ -33,6 +33,8 @@ public class InventoryUI : MonoBehaviour{
     
     public void UpdateAmount(int id, int amount)
     {
+        if(!content) return;
+        
         content.GetChild(id).GetComponent<InventoryItem>().UpdateAmount(amount);
     }
     

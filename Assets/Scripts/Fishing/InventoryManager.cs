@@ -18,7 +18,6 @@ namespace Fishing
             var itemData = allItemDataList.GetRandomItemData();
             _itemAmountList[itemData.id]++;
             inventoryUI.UpdateAmount(itemData.id, _itemAmountList[itemData.id]);
-            Debug.Log($"アイテムを追加しました: {itemData.displayName}");
 
             Save();
         }

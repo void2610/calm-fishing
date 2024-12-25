@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace Particle
+namespace Environment
 {
     public class RainCollider : MonoBehaviour
     {
