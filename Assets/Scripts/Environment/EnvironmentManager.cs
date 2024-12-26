@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Fishing;
 using Particle;
 using R3;
 using TMPro;
@@ -21,6 +22,7 @@ namespace Environment
         [SerializeField] private InteractableWater water;
         [SerializeField] private GameObject cloudPrefab;
         [SerializeField] private BackGround backGround;
+        [SerializeField] private MouseCollider mouseCollider;
     
         [Header("デバッグ")]
         [SerializeField] private TextMeshProUGUI weatherText;
@@ -45,10 +47,12 @@ namespace Environment
                 weatherCancellationToken.Cancel();
                 weatherCancellationToken = new CancellationTokenSource();
 
-                if (weather == Weather.Rainy)
-                {
-                    CreateCloud(weatherCancellationToken.Token).Forget();
-                }
+                // if (weather == Weather.Rainy)
+                // {
+                //     CreateCloud(weatherCancellationToken.Token).Forget();
+                // }
+                CreateCloud(weatherCancellationToken.Token).Forget();
+
                 
                 await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(whetherInterval.x, whetherInterval.y)), cancellationToken: objectCancellationToken);
             }
@@ -74,8 +78,8 @@ namespace Environment
             {
                 var cloud = Instantiate(cloudPrefab, new Vector3(10, 4, 0), Quaternion.identity, this.transform);
                 var pos = new Vector3(Random.Range(-8, 8), 4, 0);
-                var lifeTime = Random.Range(5, 10);
-                cloud.GetComponent<Cloud>().Init(pos, water, lifeTime);
+                var lifeTime = Random.Range(20, 50);
+                cloud.GetComponent<Cloud>().Init(pos, water, mouseCollider, lifeTime);
             
                 await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(5, 10)), cancellationToken: cancellationToken);
             }
@@ -100,7 +104,7 @@ namespace Environment
             var cloud = Instantiate(cloudPrefab, new Vector3(10, 4, 0), Quaternion.identity, this.transform);
             var pos = new Vector3(Random.Range(-8, 8), 4, 0);
             var lifeTime = Random.Range(5, 10);
-            cloud.GetComponent<Cloud>().Init(pos, water, lifeTime);
+            cloud.GetComponent<Cloud>().Init(pos, water, mouseCollider, lifeTime);
         }
     }
 }
