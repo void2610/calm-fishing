@@ -23,7 +23,7 @@ public class TitleMenu : MonoBehaviour
     private async UniTaskVoid StartGameAsync()
     {
         SeManager.Instance.PlaySe("button");
-        this.GetComponent<CanvasGroup>().interactable = false;
+        _titleCanvasGroup.interactable = false;
         
         // タイトルUIを非表示
         foreach (var ui in moveUpUIs)
@@ -38,7 +38,6 @@ public class TitleMenu : MonoBehaviour
         foreach (var ui in moveInUIs)
         {
             ui.StartMove();
-            // await UniTask.Delay(50);
         }
         await UniTask.Delay(1500);
         
@@ -112,8 +111,9 @@ public class TitleMenu : MonoBehaviour
         HideCredit();
         HideLicense();
         
-        // EnableCanvasGroup(inGameUI, false);
-        EnableCanvasGroup(_titleCanvasGroup, false);
+        EnableCanvasGroup(inGameUI, true);
+        EnableCanvasGroup(_titleCanvasGroup, true);
+        _titleCanvasGroup.alpha = 0f;
         
         _titleCanvasGroup.DOFade(1f, 3f).OnComplete(
             () => EnableCanvasGroup(_titleCanvasGroup, true)
