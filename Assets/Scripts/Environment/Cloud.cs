@@ -1,3 +1,4 @@
+using System.Collections;
 using DG.Tweening;
 using Fishing;
 using Particle;
@@ -11,26 +12,25 @@ namespace Environment
     {
 
         [SerializeField] private RainCollider rain;
-        private InteractableWater _water;
-        private VisualEffect _vfx;
-        private MouseCollider _mouse;
         
-        public void Init(Vector3 pos, InteractableWater water,　MouseCollider mouse, float lifeTime = -1f)
+        public void Init(Vector3 pos, InteractableWater water, float lifeTime = -1)
         {
-            if(lifeTime > 0f) Destroy(this.gameObject, lifeTime);
-            
-            _water = water;
-            _mouse = mouse;
-            _vfx = GetComponent<VisualEffect>();
             rain.Init(water);
-            transform.DOMove(pos, 3f).SetEase(Ease.InOutSine);
-        }
-
-        private void Update()
-        {
-            if(!_mouse || !_vfx) return;
+            transform.DOMove(pos, 3f).SetEase(Ease.InOutSine).SetLink(gameObject);
             
-            // _vfx.SetVector3("MousePosition", _mouse.transform.position);
+            if (lifeTime > 0)
+            {
+                StartCoroutine(StopCoroutine(lifeTime));
+            }
+        }
+        
+        private IEnumerator StopCoroutine(float time)
+        {
+            yield return new WaitForSeconds(time);
+            rain.StopRain();
+            GetComponent<VisualEffect>().Stop();
+            yield return new WaitForSeconds(5.0f);
+            Destroy(gameObject);
         }
     }
 }

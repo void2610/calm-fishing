@@ -47,12 +47,10 @@ namespace Environment
                 weatherCancellationToken.Cancel();
                 weatherCancellationToken = new CancellationTokenSource();
 
-                // if (weather == Weather.Rainy)
-                // {
-                //     CreateCloud(weatherCancellationToken.Token).Forget();
-                // }
-                CreateCloud(weatherCancellationToken.Token).Forget();
-
+                if (weather == Weather.Rainy)
+                {
+                    CreateCloud(weatherCancellationToken.Token).Forget();
+                }
                 
                 await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(whetherInterval.x, whetherInterval.y)), cancellationToken: objectCancellationToken);
             }
@@ -76,12 +74,13 @@ namespace Environment
         {
             while (true)
             {
-                var cloud = Instantiate(cloudPrefab, new Vector3(10, 4, 0), Quaternion.identity, this.transform);
+                var initPos = new Vector3(Random.Range(-10, 10), 4, 0);
+                var cloud = Instantiate(cloudPrefab, initPos, Quaternion.identity, this.transform);
                 var pos = new Vector3(Random.Range(-8, 8), 4, 0);
-                var lifeTime = Random.Range(20, 50);
-                cloud.GetComponent<Cloud>().Init(pos, water, mouseCollider, lifeTime);
+                var lifeTime = Random.Range(3, 10);
+                cloud.GetComponent<Cloud>().Init(pos, water, lifeTime);
             
-                await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(5, 10)), cancellationToken: cancellationToken);
+                await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(0.2f, 1)), cancellationToken: cancellationToken);
             }
         }
     
@@ -100,11 +99,6 @@ namespace Environment
         
             ChangeWeather().Forget();
             ChangeTimePeriod().Forget();
-
-            var cloud = Instantiate(cloudPrefab, new Vector3(10, 4, 0), Quaternion.identity, this.transform);
-            var pos = new Vector3(Random.Range(-8, 8), 4, 0);
-            var lifeTime = Random.Range(5, 10);
-            cloud.GetComponent<Cloud>().Init(pos, water, mouseCollider, lifeTime);
         }
     }
 }

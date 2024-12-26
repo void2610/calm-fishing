@@ -15,6 +15,11 @@ namespace Environment
             
             _rain.trigger.SetCollider(0, water.GetComponent<EdgeCollider2D>());
         }
+        
+        public void StopRain()
+        {
+            _rain.Stop();
+        }
     
         private void OnParticleTrigger()
         {
