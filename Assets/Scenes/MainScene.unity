@@ -1517,7 +1517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryItemPrefab: {fileID: 6729976926087826395, guid: 4d7ea21157c3e4729809c5978c721e5b, type: 3}
   content: {fileID: 978900592}
-  offset: {x: 440, y: 348}
+  offset: {x: -170, y: 120}
   padding: {x: 55, y: 0}
   column: 4
   nameText: {fileID: 1653424816}
@@ -2687,7 +2687,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 173783975}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.95472556
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2762,7 +2762,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0000047947046}
+  m_AnchoredPosition: {x: 0, y: 0.9141584}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &985969108
@@ -3832,7 +3832,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530184979}
   m_CullTransparentMesh: 1
---- !u!43 &1599147698
+--- !u!43 &1582129153
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4575,7 +4575,7 @@ MonoBehaviour:
     rid: 8457818921835167835
   m_ShadowCastingSource: 2
   m_ShadowMesh:
-    m_Mesh: {fileID: 1599147698}
+    m_Mesh: {fileID: 1582129153}
     m_LocalBounds:
       m_Center: {x: 0, y: 0, z: 0}
       m_Extent: {x: 0.44999695, y: 0.44999695, z: 0}
@@ -7991,7 +7991,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u5236\u4F5C\nvoid2610\n\n\n\n\n\nSE\nKenney\nhttps://www.kenney.nl/assets\n\nSE\n\u52B9\u679C\u97F3\u30E9\u30DC\nhttps://soundeffect-lab.info\n\n\u74B0\u5883\u97F3\nVSQ
     plus+\nhttps://vsq.co.jp/plus/sound/category_sub/sea/\n\n\nBGM\nseadenden 8bit
-    free BGM\nhttps://seadenden-8bit.com\n\n\u30D5\u30A9\u30F3\u30C8\nPixelMplus12\nhttps://github.com/itouhiro/PixelMplus\n\nTheStrongGamer\n\n"
+    free BGM\nhttps://seadenden-8bit.com\n\n\u30D5\u30A9\u30F3\u30C8\nPixelMplus12\nhttps://github.com/itouhiro/PixelMplus\n\nTheStrongGamer\nhttps://hicchicc.github.io/00ff/\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e590b3c4824bb42dd9e386cc2f940d18, type: 2}
   m_sharedMaterial: {fileID: 8992585608633973963, guid: e590b3c4824bb42dd9e386cc2f940d18, type: 2}
@@ -9138,8 +9138,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1991728456162745703}
   m_HandleRect: {fileID: 3645717691301212111}
   m_Direction: 2
-  m_Value: -0.00000003590303
-  m_Size: 0.29166445
+  m_Value: 1
+  m_Size: 0.26923078
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11174,8 +11174,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 850}
-  m_SizeDelta: {x: 0, y: 1200}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 1300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8518302999334283182
 MonoBehaviour:

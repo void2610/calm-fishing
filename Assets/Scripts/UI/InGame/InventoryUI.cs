@@ -22,8 +22,18 @@ public class InventoryUI : MonoBehaviour{
         for (var i = 0; i < allItemDataList.list.Count; i++)
         {
             var itemData = allItemDataList.list[i];
-            var pos = new Vector3((i % column) * padding.x, -(i / column) * padding.y, 0) + new Vector3(offset.x, offset.y, 0);
-            var inventoryItem = Instantiate(inventoryItemPrefab, pos, Quaternion.identity, content);
+            var pos = new Vector2(
+                (i % column) * padding.x + offset.x,
+                -(i / column) * padding.y + offset.y
+            );
+
+            var inventoryItem = Instantiate(inventoryItemPrefab, content);
+            var rectTransform = inventoryItem.GetComponent<RectTransform>();
+            if (rectTransform != null)
+            {
+                rectTransform.anchoredPosition = pos;
+            }
+
             inventoryItem.GetComponent<InventoryItem>().Init(itemData, itemAmountList[i]);
             Utils.AddEventToObject(inventoryItem, () => ShowDetail(itemData), UnityEngine.EventSystems.EventTriggerType.PointerEnter);
         }
