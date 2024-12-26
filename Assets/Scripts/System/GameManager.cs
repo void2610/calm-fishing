@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour
     public float TimeScale { get; private set; } = 1.0f;
     public UIManager UIManager => this.GetComponent<UIManager>();
 
-    private int _seed = 42;
     private bool _isPaused;
 
     public void ChangeTimeScale()

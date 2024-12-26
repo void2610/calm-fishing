@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0edd4d6dec9974f11ba4b078ca3a0e1e, type: 3}
+  m_Name: PaletteStore
+  m_EditorClassIdentifier: 
+  _colorPalette:
+    _entries:
+      _keys:
+      - da5586d1-de6e-4cbb-b9cd-c7d968961cda
+      - 67a15a00-025f-4e18-87b6-d3c754d33290
+      - afaf23d6-62c4-45e9-aa73-c0219b5379ad
+      _values:
+      - _id: da5586d1-de6e-4cbb-b9cd-c7d968961cda
+        _name:
+          _value: NormalText
+        _values:
+          _keys:
+          - a28c0717-fc7f-4897-b9f2-f75ae5d367c9
+          _values:
+          - _value: {r: 1, g: 1, b: 1, a: 1}
+      - _id: 67a15a00-025f-4e18-87b6-d3c754d33290
+        _name:
+          _value: Window
+        _values:
+          _keys:
+          - a28c0717-fc7f-4897-b9f2-f75ae5d367c9
+          _values:
+          - _value: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
+      - _id: afaf23d6-62c4-45e9-aa73-c0219b5379ad
+        _name:
+          _value: Button
+        _values:
+          _keys:
+          - a28c0717-fc7f-4897-b9f2-f75ae5d367c9
+          _values:
+          - _value: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
+    _themes:
+      _keys:
+      - a28c0717-fc7f-4897-b9f2-f75ae5d367c9
+      _values:
+      - _id: a28c0717-fc7f-4897-b9f2-f75ae5d367c9
+        _name:
+          _value: Default
+    _entryOrders:
+      _ids:
+      - da5586d1-de6e-4cbb-b9cd-c7d968961cda
+      - 67a15a00-025f-4e18-87b6-d3c754d33290
+      - afaf23d6-62c4-45e9-aa73-c0219b5379ad
+    _themeOrders:
+      _ids:
+      - a28c0717-fc7f-4897-b9f2-f75ae5d367c9
+    _activeThemeId: a28c0717-fc7f-4897-b9f2-f75ae5d367c9
+  _gradientPalette:
+    _entries:
+      _keys: []
+      _values: []
+    _themes:
+      _keys:
+      - 7d730b80-2656-443c-9e65-d9d470802944
+      _values:
+      - _id: 7d730b80-2656-443c-9e65-d9d470802944
+        _name:
+          _value: Default
+    _entryOrders:
+      _ids: []
+    _themeOrders:
+      _ids:
+      - 7d730b80-2656-443c-9e65-d9d470802944
+    _activeThemeId: 7d730b80-2656-443c-9e65-d9d470802944
+  _characterStylePalette:
+    _entries:
+      _keys: []
+      _values: []
+    _themes:
+      _keys:
+      - dd4030bd-68c9-469e-8e55-0cc5a39090d3
+      _values:
+      - _id: dd4030bd-68c9-469e-8e55-0cc5a39090d3
+        _name:
+          _value: Default
+    _entryOrders:
+      _ids: []
+    _themeOrders:
+      _ids:
+      - dd4030bd-68c9-469e-8e55-0cc5a39090d3
+    _activeThemeId: dd4030bd-68c9-469e-8e55-0cc5a39090d3
+  _characterStyleTMPPalette:
+    _entries:
+      _keys: []
+      _values: []
+    _themes:
+      _keys:
+      - 53773456-cf69-4a75-8e06-8a8fcf93fa78
+      _values:
+      - _id: 53773456-cf69-4a75-8e06-8a8fcf93fa78
+        _name:
+          _value: Default
+    _entryOrders:
+      _ids: []
+    _themeOrders:
+      _ids:
+      - 53773456-cf69-4a75-8e06-8a8fcf93fa78
+    _activeThemeId: 53773456-cf69-4a75-8e06-8a8fcf93fa78
+  _missingEntryErrorLevel: 1

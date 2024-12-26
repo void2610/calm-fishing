@@ -1,9 +1,11 @@
 using System.Collections.Generic;
-using Particle;
-using UnityEditor;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
+
+# if UNITY_EDITOR
+using UnityEditor;
+using UnityEditor.UIElements;
+# endif
 
 namespace Environment
 {
@@ -203,7 +205,7 @@ namespace Environment
         }
     }
 
-
+#if UNITY_EDITOR
     [CustomEditor(typeof(InteractableWater))]
     public class InteractableWaterEditor : Editor
     {
@@ -237,4 +239,5 @@ namespace Environment
             height = Mathf.Max(0.1f, calculatedHeightMax);
         }
     }
+#endif
 }
