@@ -13,6 +13,8 @@ namespace Fishing
 
         private void Start()
         {
+            this.transform.DOMoveY(-0.15f, 2.0f).SetEase(Ease.InOutQuad).SetLoops(-1, LoopType.Yoyo).SetRelative();
+            
             MoveRandomly().Forget();
         }
 

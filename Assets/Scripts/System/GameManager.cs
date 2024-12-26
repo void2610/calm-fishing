@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
     
     [Header("オブジェクト")]
     [SerializeField] private GameObject playerObj;
-    [SerializeField] private GameObject cloudPrefab;
     [SerializeField] public Canvas pixelCanvas;
     [SerializeField] public Canvas uiCanvas;
 
