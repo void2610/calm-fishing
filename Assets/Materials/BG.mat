@@ -65,7 +65,7 @@ Material:
     - _EnableExternalAlpha: 0
     - _Float: 2.74
     - _Height: 0.7
-    - _Height1: -0.44
+    - _Height1: 0
     - _Height2: 1
     - _Power: 1
     - _QueueControl: 0
@@ -79,8 +79,8 @@ Material:
     - _ZWriteControl: 0
     m_Colors:
     - _Color: {r: 0, g: 0.39905658, b: 0.5660378, a: 1}
-    - _Color1: {r: 0, g: 0.88235295, b: 1, a: 0}
-    - _Color2: {r: 0, g: 0.88235295, b: 1, a: 0}
+    - _Color1: {r: 0, g: 0.43529412, b: 0.83137256, a: 0}
+    - _Color2: {r: 1, g: 0.5529412, b: 0, a: 0}
     - _Color3: {r: 0, g: 0, b: 1, a: 0}
     - _Color_1: {r: 0.039215688, g: 0.14901961, b: 0.35686275, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
