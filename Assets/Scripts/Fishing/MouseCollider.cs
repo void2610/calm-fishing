@@ -13,7 +13,7 @@ namespace Fishing
         private void Update()
         {
             var pos = Input.mousePosition;
-            pos = useCamera.ScreenToWorldPoint(pos);
+            pos = useCamera.ScreenToViewportPoint(pos);
             
             pos.x *= (float)renderTextureWidth / Screen.width;
             pos.y *= (float)renderTextureHeight / Screen.height;
