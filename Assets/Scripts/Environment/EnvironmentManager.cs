@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Fishing;
 using Particle;
 using R3;
 using TMPro;
@@ -21,6 +22,7 @@ namespace Environment
         [SerializeField] private InteractableWater water;
         [SerializeField] private GameObject cloudPrefab;
         [SerializeField] private BackGround backGround;
+        [SerializeField] private MouseCollider mouseCollider;
     
         [Header("デバッグ")]
         [SerializeField] private TextMeshProUGUI weatherText;
@@ -72,12 +74,13 @@ namespace Environment
         {
             while (true)
             {
-                var cloud = Instantiate(cloudPrefab, new Vector3(10, 4, 0), Quaternion.identity, this.transform);
+                var initPos = new Vector3(Random.Range(-10, 10), 4, 0);
+                var cloud = Instantiate(cloudPrefab, initPos, Quaternion.identity, this.transform);
                 var pos = new Vector3(Random.Range(-8, 8), 4, 0);
-                var lifeTime = Random.Range(5, 10);
+                var lifeTime = Random.Range(3, 10);
                 cloud.GetComponent<Cloud>().Init(pos, water, lifeTime);
             
-                await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(5, 10)), cancellationToken: cancellationToken);
+                await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(0.2f, 1)), cancellationToken: cancellationToken);
             }
         }
     
@@ -96,11 +99,6 @@ namespace Environment
         
             ChangeWeather().Forget();
             ChangeTimePeriod().Forget();
-
-            var cloud = Instantiate(cloudPrefab, new Vector3(10, 4, 0), Quaternion.identity, this.transform);
-            var pos = new Vector3(Random.Range(-8, 8), 4, 0);
-            var lifeTime = Random.Range(5, 10);
-            cloud.GetComponent<Cloud>().Init(pos, water, lifeTime);
         }
     }
 }

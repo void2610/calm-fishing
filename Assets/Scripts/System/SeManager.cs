@@ -19,8 +19,6 @@ public class SeManager : MonoBehaviour
     [SerializeField]
     private SoundData[] soundDatas;
 
-
-
     public static SeManager Instance;
     private readonly AudioSource[] seAudioSourceList = new AudioSource[20];
     private float _seVolume = 0.5f;
