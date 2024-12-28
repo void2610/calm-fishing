@@ -27,17 +27,15 @@ namespace Environment
         {
             _lifeTime -= time;
             if(_lifeTime <= 0)
-                StartCoroutine(nameof(StopCoroutine), 1.0f);
+                StartCoroutine(nameof(StopCoroutine));
         }
         
-        private IEnumerator StopCoroutine(float time)
+        private IEnumerator StopCoroutine()
         {
-            Debug.Log("Stop");
-
             _isStopping = true;
             rain.StopRain();
             GetComponent<VisualEffect>().Stop();
-            yield return new WaitForSeconds(time);
+            yield return new WaitForSeconds(5);
             Destroy(gameObject);
         }
 
@@ -49,17 +47,15 @@ namespace Environment
                 _lifeTime -= Time.deltaTime;
             else
             {
-                StartCoroutine(nameof(StopCoroutine), 1.0f);
+                StartCoroutine(nameof(StopCoroutine));
             }
         }
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log(other.name);
             if (other.TryGetComponent(out MouseCollider mouseCollider))
             {   
-                _lifeTime -= 0.5f;
-                Debug.Log("Hit");
+                _lifeTime -= 1.0f;
             }
         }
     }
