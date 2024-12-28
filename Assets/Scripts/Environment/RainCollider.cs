@@ -18,6 +18,8 @@ namespace Environment
         
         public void StopRain()
         {
+            if (!_rain) return;
+            
             _rain.Stop();
         }
     

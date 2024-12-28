@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Fishing;
@@ -33,6 +34,7 @@ namespace Environment
 
         private readonly ReactiveProperty<Weather> _weather = new ReactiveProperty<Weather>();
         private readonly ReactiveProperty<TimePeriod> _timePeriod = new ReactiveProperty<TimePeriod>();
+        private List<GameObject> _clouds = new();
     
         private async UniTaskVoid ChangeWeather()
         {
@@ -72,16 +74,24 @@ namespace Environment
     
         private async UniTaskVoid CreateCloud(CancellationToken cancellationToken)
         {
+            _clouds.Clear();
             while (true)
             {
                 var initPos = new Vector3(Random.Range(-10, 10), 4, 0);
                 var cloud = Instantiate(cloudPrefab, initPos, Quaternion.identity, this.transform);
                 var pos = new Vector3(Random.Range(-8, 8), 4, 0);
-                var lifeTime = Random.Range(3, 10);
+                var lifeTime = Random.Range(10, 30);
                 cloud.GetComponent<Cloud>().Init(pos, water, lifeTime);
-            
+                _clouds.Add(cloud);
+                
                 await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(0.2f, 1)), cancellationToken: cancellationToken);
             }
+        }
+        
+        private void ChangeFishingInterval(int cloudCount)
+        {
+            var time = 2 + cloudCount * 0.5f;
+            FishingManager.Instance.ChangeFishingInterval(time);
         }
     
         private void Awake()
@@ -99,6 +109,14 @@ namespace Environment
         
             ChangeWeather().Forget();
             ChangeTimePeriod().Forget();
+        }
+
+        private void Update()
+        {
+            // 雲が削除されているか確認
+            _clouds.RemoveAll(cloud => !cloud);
+            
+            ChangeFishingInterval(_clouds.Count);
         }
     }
 }

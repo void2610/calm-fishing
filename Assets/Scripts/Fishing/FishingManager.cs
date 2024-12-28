@@ -16,13 +16,9 @@ namespace Fishing
         [SerializeField] private float fishingTime;
         [SerializeField] private float fishingInterval;
         
-        private void ChangeFishingInterval(Weather weather)
+        public void ChangeFishingInterval(float time)
         {
-            fishingInterval = weather switch
-            {
-                Weather.Rainy => 10,
-                _ => 2
-            };
+            fishingInterval = time;
         }
         
         private async UniTaskVoid Fishing()
@@ -53,8 +49,6 @@ namespace Fishing
         {
             fishingGauge.material.SetFloat(RatioProperty, 1);
             Fishing().Forget();
-            
-            EnvironmentManager.Instance.CurrentWeather.AsObservable().Subscribe(ChangeFishingInterval).AddTo(this);
         } 
     }
 }
