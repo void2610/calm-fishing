@@ -18,7 +18,8 @@ public class InventoryItem : MonoBehaviour
         if (amount > 0)
         {
             image.sprite = itemData.sprite;
-            amountText.text = amount.ToString();
+            Debug.Log("amount: " + amount);
+            amountText.text = FormatAmount(amount);
         }
         else
         {
@@ -32,6 +33,16 @@ public class InventoryItem : MonoBehaviour
         if (amount <= 0) return;
         
         image.sprite = _itemData.sprite;
-        amountText.text = amount.ToString();
+        amountText.text = FormatAmount(amount);
+    }
+    
+    // 数値をフォーマットするメソッド
+    private static string FormatAmount(int amount)
+    {
+        if (amount >= 1_000_000) // 100万以上
+            return (amount / 1_000_000f).ToString("0.0") + "M"; // 例: 1.5M
+        if (amount >= 1_000) // 1000以上
+            return (amount / 1_000f).ToString("0.0") + "K"; // 例: 1.0K
+        return amount.ToString(); // そのまま表示
     }
 }
