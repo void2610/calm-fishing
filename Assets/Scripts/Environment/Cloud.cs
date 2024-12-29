@@ -53,6 +53,8 @@ namespace Environment
         
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if(GameManager.Instance.IsPaused) return;
+            
             if (other.TryGetComponent(out MouseCollider mouseCollider))
             {   
                 _lifeTime -= 1.0f;
