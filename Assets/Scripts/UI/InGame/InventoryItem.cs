@@ -18,7 +18,6 @@ public class InventoryItem : MonoBehaviour
         if (amount > 0)
         {
             image.sprite = itemData.sprite;
-            Debug.Log("amount: " + amount);
             amountText.text = FormatAmount(amount);
         }
         else

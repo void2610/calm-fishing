@@ -1,7 +1,6 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using UnityEditor.Animations;
 
 namespace Fishing
 {
@@ -13,8 +12,8 @@ namespace Fishing
             Fishing
         }
         
-        [SerializeField] private AnimatorController standAnimator;
-        [SerializeField] private AnimatorController fishingAnimator;
+        [SerializeField] private RuntimeAnimatorController standAnimator;
+        [SerializeField] private RuntimeAnimatorController fishingAnimator;
         
         [SerializeField] private Vector2 moveInterval;
         [SerializeField] private Vector2 moveDistance;
