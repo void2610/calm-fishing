@@ -3,8 +3,8 @@ guid: 9357de161038e404b9f02b9929572d06
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4455655206081075757
-    second: export_0
+      213: 8143951636752000675
+    second: fish1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: export_0
+      name: fish1_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 12
         width: 64
-        height: 64
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d2a15188dcaa5dd30800000000000000
-      internalID: 4455655206081075757
+      spriteID: 3a660987dd0250170800000000000000
+      internalID: 8143951636752000675
       vertices: []
       indices: 
       edges: []
@@ -172,7 +172,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      export_0: 4455655206081075757
+      fish1_0: 8143951636752000675
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
