@@ -57,7 +57,7 @@ namespace Environment
             
             if (other.TryGetComponent(out MouseCollider mouseCollider))
             {   
-                _lifeTime -= 1.0f;
+                _lifeTime -= 5.0f;
             }
         }
     }

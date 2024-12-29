@@ -33,10 +33,11 @@ namespace Environment
     
         public ReadOnlyReactiveProperty<Weather> CurrentWeather => _weather.ToReadOnlyReactiveProperty();
         public ReadOnlyReactiveProperty<TimePeriod> CurrentTimePeriod => _timePeriod.ToReadOnlyReactiveProperty();
+        public float DayLength => dayLength;
 
         private readonly ReactiveProperty<Weather> _weather = new ReactiveProperty<Weather>();
         private readonly ReactiveProperty<TimePeriod> _timePeriod = new ReactiveProperty<TimePeriod>();
-        private List<GameObject> _clouds = new();
+        private readonly List<GameObject> _clouds = new();
         private GameObject _snow;
     
         private async UniTaskVoid ChangeWeather()
@@ -104,9 +105,9 @@ namespace Environment
             }
         }
         
-        private void ChangeFishingInterval(int cloudCount)
+        private static void ChangeFishingInterval(int cloudCount)
         {
-            var time = 2 + cloudCount * 0.5f;
+            var time = 2 + cloudCount * 0.3f;
             FishingManager.Instance.ChangeFishingInterval(time);
         }
     
@@ -131,7 +132,6 @@ namespace Environment
         {
             // 雲が削除されているか確認
             _clouds.RemoveAll(cloud => !cloud);
-            
             ChangeFishingInterval(_clouds.Count);
         }
     }

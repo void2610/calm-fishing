@@ -92,12 +92,10 @@ public class UIManager : MonoBehaviour
         bgmSlider.onValueChanged.AddListener((value) =>
         {
             BgmManager.Instance.BgmVolume = value;
-            Debug.Log("BGM Volume: " + value);
         });
         seSlider.onValueChanged.AddListener((value) =>
         {
             SeManager.Instance.seVolume = value;
-            Debug.Log("SE Volume: " + value);
         });
 
         var trigger = seSlider.gameObject.AddComponent<EventTrigger>();
