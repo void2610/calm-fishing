@@ -30,9 +30,11 @@ namespace Fishing
                 await UniTask.Delay(System.TimeSpan.FromSeconds(fishingInterval), cancellationToken: cancellationToken);
 
                 fishingGauge.material.SetFloat(RatioProperty, 1);
+                player.PlayAnimation(Player.AnimationType.Fishing);
                 await fishingGauge.material.DOFloat(0, RatioProperty, fishingTime).SetEase(Ease.Linear).ToUniTask(cancellationToken: cancellationToken);
                 
                 InventoryManager.Instance.GetRandomItem();
+                player.PlayAnimation(Player.AnimationType.Stand);
                 
                 await UniTask.Delay(500, cancellationToken: cancellationToken);
                 fishingGauge.material.SetFloat(RatioProperty, 1);

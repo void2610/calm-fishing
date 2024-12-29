@@ -1,15 +1,43 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using UnityEditor.Animations;
 
 namespace Fishing
 {
     public class Player : MonoBehaviour
     {
+        public enum AnimationType
+        {
+            Stand,
+            Fishing
+        }
+        
+        [SerializeField] private AnimatorController standAnimator;
+        [SerializeField] private AnimatorController fishingAnimator;
+        
         [SerializeField] private Vector2 moveInterval;
         [SerializeField] private Vector2 moveDistance;
         [SerializeField] private float moveSpeed;
         [SerializeField] private Vector2 moveLimit;
+        
+        private Animator _animator;
+        
+        public void PlayAnimation(AnimationType animationType)
+        {
+            _animator.runtimeAnimatorController = animationType switch
+            {
+                AnimationType.Stand => standAnimator,
+                AnimationType.Fishing => fishingAnimator,
+                _ => _animator.runtimeAnimatorController
+            };
+        }
+
+        private void Awake()
+        {
+            _animator = this.transform.GetComponentInChildren<Animator>();
+            _animator.runtimeAnimatorController = standAnimator;
+        }
 
         private void Start()
         {
