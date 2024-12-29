@@ -6,10 +6,37 @@ namespace Fishing
 {
     public class Player : MonoBehaviour
     {
+        public enum AnimationType
+        {
+            Stand,
+            Fishing
+        }
+        
+        [SerializeField] private RuntimeAnimatorController standAnimator;
+        [SerializeField] private RuntimeAnimatorController fishingAnimator;
+        
         [SerializeField] private Vector2 moveInterval;
         [SerializeField] private Vector2 moveDistance;
         [SerializeField] private float moveSpeed;
         [SerializeField] private Vector2 moveLimit;
+        
+        private Animator _animator;
+        
+        public void PlayAnimation(AnimationType animationType)
+        {
+            _animator.runtimeAnimatorController = animationType switch
+            {
+                AnimationType.Stand => standAnimator,
+                AnimationType.Fishing => fishingAnimator,
+                _ => _animator.runtimeAnimatorController
+            };
+        }
+
+        private void Awake()
+        {
+            _animator = this.transform.GetComponentInChildren<Animator>();
+            _animator.runtimeAnimatorController = standAnimator;
+        }
 
         private void Start()
         {

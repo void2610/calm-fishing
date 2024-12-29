@@ -37,13 +37,13 @@ namespace Environment
         [SerializeField] private Volume volume;
         [SerializeField] private Light2D globalLight;
         [SerializeField] private Light2D sunLight;
-        [SerializeField] private float dayLength;
+        private float _dayLength;
         
         private int _timePeriod;
         
         private void StartTween(TimePeriod timePeriod){
             var next = (int)timePeriod;
-            DOTween.To(() => 0f, (t) => Gradation(next, t), 1f, dayLength / 8)
+            DOTween.To(() => 0f, (t) => Gradation(next, t), 1f, _dayLength / 8)
                 .OnComplete(() => _timePeriod = next);
         }
 
@@ -95,6 +95,7 @@ namespace Environment
 
         public void Start()
         {
+            _dayLength = EnvironmentManager.Instance.DayLength;
             EnvironmentManager.Instance.CurrentTimePeriod.AsObservable().Subscribe(StartTween).AddTo(this);
         }
     }
