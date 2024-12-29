@@ -6,7 +6,6 @@ using UnityEngine;
 public enum Weather
 {
     Sunny,
-    Cloudy,
     Rainy,
     Snowy
 }

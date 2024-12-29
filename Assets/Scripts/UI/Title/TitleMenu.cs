@@ -13,6 +13,8 @@ public class TitleMenu : MonoBehaviour
     [SerializeField] private List<MoveUpUI> moveUpUIs;
     [SerializeField] private List<MoveInUI> moveInUIs;
     
+    public bool isTitleClosed = false;
+    
     private CanvasGroup _titleCanvasGroup;
     
     public void StartGame()
@@ -43,6 +45,7 @@ public class TitleMenu : MonoBehaviour
         
         inGameUI.interactable = true;
         inGameUI.blocksRaycasts = true;
+        isTitleClosed = true;
     }
 
     public void ShowCredit()

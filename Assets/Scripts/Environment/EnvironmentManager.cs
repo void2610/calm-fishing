@@ -8,6 +8,7 @@ using R3;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using Random = UnityEngine.Random;
 
 namespace Environment
@@ -26,6 +27,7 @@ namespace Environment
         [SerializeField] private GameObject snowPrefab;
         [SerializeField] private BackGround backGround;
         [SerializeField] private MouseCollider mouseCollider;
+        [SerializeField] private Light2D GodRay;
     
         [Header("デバッグ")]
         [SerializeField] private TextMeshProUGUI weatherText;
@@ -47,7 +49,7 @@ namespace Environment
 
             while (true)
             {
-                var weather = (Weather)Random.Range(0, 4);
+                var weather = (Weather)Random.Range(0, 3);
                 _weather.Value = weather;
                 weatherText.text = weather.ToString();
                 weatherCancellationToken.Cancel();
@@ -105,9 +107,19 @@ namespace Environment
             }
         }
         
+        private async UniTaskVoid GodRayEffect()
+        {
+            var cancellationToken = this.GetCancellationTokenOnDestroy();
+            while (true)
+            {
+                GodRay.intensity = Random.Range(0, 1);
+                await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(30f, 180f)), cancellationToken: cancellationToken);
+            }
+        }
+        
         private static void ChangeFishingInterval(int cloudCount)
         {
-            var time = 2 + cloudCount * 0.3f;
+            var time = 10 + cloudCount * 2f;
             FishingManager.Instance.ChangeFishingInterval(time);
         }
     
@@ -126,6 +138,7 @@ namespace Environment
         
             ChangeWeather().Forget();
             ChangeTimePeriod().Forget();
+            GodRayEffect().Forget();
         }
 
         private void Update()

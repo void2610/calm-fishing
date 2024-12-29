@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using TMPro;
 using DG.Tweening;
+using Environment;
+using Fishing;
 using R3;
 using UnityEngine.Rendering;
 
@@ -81,8 +83,8 @@ public class UIManager : MonoBehaviour
     
     private void Awake()
     {
-        bgmSlider.value = PlayerPrefs.GetFloat("BgmVolume", 1.0f);
-        seSlider.value = PlayerPrefs.GetFloat("SeVolume", 1.0f);
+        bgmSlider.value = PlayerPrefs.GetFloat("BgmVolume", 0.5f);
+        seSlider.value = PlayerPrefs.GetFloat("SeVolume", 0.5f);
         
         canvasGroups.ForEach(c => EnableCanvasGroup(c.name, false));
     }
@@ -105,6 +107,11 @@ public class UIManager : MonoBehaviour
         };
         entry.callback.AddListener(_ => SeManager.Instance.PlaySe("button"));
         trigger.triggers.Add(entry);
+        
+        InventoryManager.Instance.Score.AsObservable().Subscribe(score =>
+        {
+            coinText.text = "score: " + score;
+        }).AddTo(this);
 
         fadeImage.color = new Color(0, 0, 0, 1);
         fadeImage.DOFade(0, 2f).SetUpdate(true);

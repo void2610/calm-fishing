@@ -23,11 +23,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject playerObj;
     [SerializeField] public Canvas pixelCanvas;
     [SerializeField] public Canvas uiCanvas;
-
+    [SerializeField] public TitleMenu titleMenu;
+    
     public float TimeScale { get; private set; } = 1.0f;
     public UIManager UIManager => this.GetComponent<UIManager>();
 
     public bool IsPaused { get; private set; }
+    private bool _isInventoryOpened = false;
 
     public void ChangeTimeScale()
     {
@@ -55,6 +57,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if(!titleMenu.isTitleClosed) return;
+        
         if (Input.GetKeyDown(KeyCode.P))
         {
             if (IsPaused)
@@ -67,6 +71,25 @@ public class GameManager : MonoBehaviour
                 IsPaused = true;
                 UIManager.OnClickPause();
             }
+        }
+        
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (_isInventoryOpened)
+            {
+                _isInventoryOpened = false;
+                UIManager.CloseInventory();
+            }
+            else
+            {
+                _isInventoryOpened = true;
+                UIManager.OpenInventory();
+            }
+        }
+        
+        if(Input.GetKeyDown((KeyCode.T)))
+        {
+            ChangeTimeScale();
         }
     }
 }

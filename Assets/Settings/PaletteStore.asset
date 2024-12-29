@@ -42,7 +42,7 @@ MonoBehaviour:
           _keys:
           - a28c0717-fc7f-4897-b9f2-f75ae5d367c9
           _values:
-          - _value: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
+          - _value: {r: 0.4, g: 0.4, b: 0.4, a: 1}
     _themes:
       _keys:
       - a28c0717-fc7f-4897-b9f2-f75ae5d367c9
