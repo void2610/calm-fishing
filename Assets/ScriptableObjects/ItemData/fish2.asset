@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf6252bafbc1646ecaa6a1a4ef250f1e, type: 3}
   m_Name: fish2
   m_EditorClassIdentifier: 
-  id: 0
+  id: 1
   sprite: {fileID: 21300000, guid: 09d1a79420ddc4603a406e4b174b21e4, type: 3}
   displayName: "\u304A\u9B5A\u3055\u3093"
   description: "\u3060\u3088"
   rarity: 0
-  price: 0
+  score: 1
   probability: 1

@@ -10,7 +10,7 @@ namespace ScriptableObject
         public string displayName;
         public string description;
         public Rarity rarity;
-        public int price;
+        public int score;
         public float probability;
     }
 }

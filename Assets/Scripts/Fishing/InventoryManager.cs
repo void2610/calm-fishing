@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using ScriptableObject;
 using UnityEngine;
+using unityroom.Api;
 
 namespace Fishing
 {
@@ -12,12 +13,17 @@ namespace Fishing
         [SerializeField] private InventoryUI inventoryUI;
         
         private readonly List<int> _itemAmountList = new ();
+        private int _score = 0;
 
         public void GetRandomItem()
         {
             var itemData = allItemDataList.GetRandomItemData();
             _itemAmountList[itemData.id]++;
             inventoryUI.UpdateAmount(itemData.id, _itemAmountList[itemData.id]);
+            
+            _score += itemData.score;
+            PlayerPrefs.SetInt("score", _score);
+            UnityroomApiClient.Instance.SendScore(1, _score, ScoreboardWriteMode.HighScoreDesc);
 
             Save();
         }
@@ -52,6 +58,8 @@ namespace Fishing
             allItemDataList.Register();
             Load();
             inventoryUI.Init(allItemDataList, _itemAmountList);
+            _score = PlayerPrefs.GetInt("score", 0);
+            PlayerPrefs.SetInt("score", _score);
         }
     
         private void OnDestroy()
