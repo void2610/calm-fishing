@@ -23,15 +23,10 @@ namespace Environment
             _lifeTime = lifeTime;
         }
         
-        public void SubtractLifeTime(float time)
-        {
-            _lifeTime -= time;
-            if(_lifeTime <= 0)
-                StartCoroutine(nameof(StopCoroutine));
-        }
-        
         private IEnumerator StopCoroutine()
         {
+            if(_isStopping) yield break;
+            
             _isStopping = true;
             rain.StopRain();
             GetComponent<VisualEffect>().Stop();
@@ -57,7 +52,7 @@ namespace Environment
             
             if (other.TryGetComponent(out MouseCollider mouseCollider))
             {   
-                _lifeTime -= 5.0f;
+                StartCoroutine(nameof(StopCoroutine));
             }
         }
     }

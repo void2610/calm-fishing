@@ -101,7 +101,7 @@ namespace Environment
                 cloud.GetComponent<Cloud>().Init(pos, water, lifeTime);
                 _clouds.Add(cloud);
                 
-                await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(3f, 10f)), cancellationToken: cancellationToken);
+                await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(1f, 3f)), cancellationToken: cancellationToken);
             }
         }
         
