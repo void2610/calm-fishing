@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Fishing;
 using Particle;
 using R3;
@@ -9,6 +10,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Environment
@@ -27,7 +29,7 @@ namespace Environment
         [SerializeField] private GameObject snowPrefab;
         [SerializeField] private BackGround backGround;
         [SerializeField] private MouseCollider mouseCollider;
-        [SerializeField] private Light2D GodRay;
+        [FormerlySerializedAs("GodRay")] [SerializeField] private Light2D godRay;
     
         [Header("デバッグ")]
         [SerializeField] private TextMeshProUGUI weatherText;
@@ -112,7 +114,8 @@ namespace Environment
             var cancellationToken = this.GetCancellationTokenOnDestroy();
             while (true)
             {
-                GodRay.intensity = Random.Range(0, 1);
+                var intensity = Random.Range(0.0f, 1.0f);
+                DOTween.To(() => godRay.intensity, x => godRay.intensity = x, intensity, 3.0f);
                 await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(30f, 180f)), cancellationToken: cancellationToken);
             }
         }
@@ -132,7 +135,7 @@ namespace Environment
         private void Start()
         {
             _weather.Value = Weather.Sunny;
-            _timePeriod.Value = TimePeriod.Night;
+            _timePeriod.Value = TimePeriod.Dawn;
             weatherText.text = _weather.Value.ToString();
             timePeriodText.text = _timePeriod.Value.ToString();
         
