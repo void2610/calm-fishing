@@ -6,6 +6,7 @@ using Fishing;
 using Particle;
 using R3;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -22,6 +23,7 @@ namespace Environment
         [Header("オブジェクト")]
         [SerializeField] private InteractableWater water;
         [SerializeField] private GameObject cloudPrefab;
+        [SerializeField] private GameObject snowPrefab;
         [SerializeField] private BackGround backGround;
         [SerializeField] private MouseCollider mouseCollider;
     
@@ -31,10 +33,12 @@ namespace Environment
     
         public ReadOnlyReactiveProperty<Weather> CurrentWeather => _weather.ToReadOnlyReactiveProperty();
         public ReadOnlyReactiveProperty<TimePeriod> CurrentTimePeriod => _timePeriod.ToReadOnlyReactiveProperty();
+        public float DayLength => dayLength;
 
         private readonly ReactiveProperty<Weather> _weather = new ReactiveProperty<Weather>();
         private readonly ReactiveProperty<TimePeriod> _timePeriod = new ReactiveProperty<TimePeriod>();
-        private List<GameObject> _clouds = new();
+        private readonly List<GameObject> _clouds = new();
+        private GameObject _snow;
     
         private async UniTaskVoid ChangeWeather()
         {
@@ -49,9 +53,22 @@ namespace Environment
                 weatherCancellationToken.Cancel();
                 weatherCancellationToken = new CancellationTokenSource();
 
-                if (weather == Weather.Rainy)
+                if (_snow)
                 {
-                    CreateCloud(weatherCancellationToken.Token).Forget();
+                    _snow.GetComponent<ParticleSystem>().Stop();
+                    Destroy(_snow, 10);
+                }
+
+                switch (weather)
+                {
+                    case Weather.Rainy:
+                        CreateCloud(weatherCancellationToken.Token).Forget();
+                        break;
+                    case Weather.Snowy:
+                    {
+                        _snow = Instantiate(snowPrefab, new Vector3(0, 5.5f, 0), Quaternion.identity, this.transform);
+                        break;
+                    }
                 }
                 
                 await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(whetherInterval.x, whetherInterval.y)), cancellationToken: objectCancellationToken);
@@ -80,7 +97,7 @@ namespace Environment
                 var initPos = new Vector3(Random.Range(-10, 10), 4, 0);
                 var cloud = Instantiate(cloudPrefab, initPos, Quaternion.identity, this.transform);
                 var pos = new Vector3(Random.Range(-8, 8), 4, 0);
-                var lifeTime = Random.Range(10, 30);
+                var lifeTime = Random.Range((dayLength / 4) * 0.2f, (dayLength / 4) * 0.8f);
                 cloud.GetComponent<Cloud>().Init(pos, water, lifeTime);
                 _clouds.Add(cloud);
                 
@@ -88,9 +105,9 @@ namespace Environment
             }
         }
         
-        private void ChangeFishingInterval(int cloudCount)
+        private static void ChangeFishingInterval(int cloudCount)
         {
-            var time = 2 + cloudCount * 0.5f;
+            var time = 2 + cloudCount * 0.3f;
             FishingManager.Instance.ChangeFishingInterval(time);
         }
     
@@ -115,7 +132,6 @@ namespace Environment
         {
             // 雲が削除されているか確認
             _clouds.RemoveAll(cloud => !cloud);
-            
             ChangeFishingInterval(_clouds.Count);
         }
     }

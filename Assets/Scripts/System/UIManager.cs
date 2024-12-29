@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,8 +19,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Volume volume;
     [SerializeField] private List<CanvasGroup> canvasGroups;
     [SerializeField] private TextMeshProUGUI coinText;
-    
-    public void EnableCanvasGroup(string canvasName, bool e)
+
+    private void EnableCanvasGroup(string canvasName, bool e)
     {
         var canvasGroup = canvasGroups.Find(c => c.name == canvasName);
         if (!canvasGroup) return;
@@ -39,11 +38,6 @@ public class UIManager : MonoBehaviour
         {
             canvasGroup.DOFade(0, 0.2f).SetUpdate(true);
         }
-    }
-    
-    private void UpdateScoreText(int amount)
-    {
-        coinText.text = "score: " + amount.ToString();
     }
     
     public void OpenInventory()
@@ -82,7 +76,7 @@ public class UIManager : MonoBehaviour
     {
         SeManager.Instance.PlaySe("button");
         fadeImage.color = new Color(0, 0, 0, 0);
-        fadeImage.DOFade(1f, 1f).OnComplete(() => SceneManager.LoadScene("TitleScene")).SetUpdate(true);
+        // fadeImage.DOFade(1f, 1f).OnComplete(() => SceneManager.LoadScene("TitleScene")).SetUpdate(true);
     }
     
     private void Awake()
@@ -95,7 +89,6 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        
         bgmSlider.onValueChanged.AddListener((value) =>
         {
             BgmManager.Instance.BgmVolume = value;

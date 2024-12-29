@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     public float TimeScale { get; private set; } = 1.0f;
     public UIManager UIManager => this.GetComponent<UIManager>();
 
-    private bool _isPaused;
+    public bool IsPaused { get; private set; }
 
     public void ChangeTimeScale()
     {
@@ -57,14 +57,14 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            if (_isPaused)
+            if (IsPaused)
             {
-                _isPaused = false;
+                IsPaused = false;
                 UIManager.OnClickResume();
             }
             else
             {
-                _isPaused = true;
+                IsPaused = true;
                 UIManager.OnClickPause();
             }
         }
