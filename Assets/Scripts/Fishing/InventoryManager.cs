@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Event;
 using R3;
 using ScriptableObject;
 using UnityEngine;
@@ -23,6 +24,8 @@ namespace Fishing
             var itemData = allItemDataList.GetRandomItemData();
             _itemAmountList[itemData.id]++;
             inventoryUI.UpdateAmount(itemData.id, _itemAmountList[itemData.id]);
+            
+            EventManager.OnItemGet.Trigger(itemData);
             
             _score.Value += itemData.score;
             PlayerPrefs.SetInt("score", _score.Value);

@@ -68,7 +68,6 @@ namespace Event
         
         private void OnGameEvent(GameEventType eventType)
         {
-            _callCountDictionary.TryAdd(eventType, 0);
             _callCountDictionary[eventType]++;
             CheckAchievement();
         }
@@ -82,6 +81,7 @@ namespace Event
             // イベントの監視
             foreach(var eventType in Enum.GetValues(typeof(GameEventType)))
             {
+                _callCountDictionary.Add((GameEventType)eventType, 0);
                 EventManager.EventDictionary[(GameEventType)eventType].Subscribe(_ => OnGameEvent((GameEventType)eventType));
             }
         }
