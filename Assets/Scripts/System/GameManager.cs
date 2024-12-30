@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using R3;
 using DG.Tweening;
+using Event;
 
 public class GameManager : MonoBehaviour
 {
