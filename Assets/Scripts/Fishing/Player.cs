@@ -24,6 +24,8 @@ namespace Fishing
         
         public void PlayAnimation(AnimationType animationType)
         {
+            if(!_animator) return;
+            
             _animator.runtimeAnimatorController = animationType switch
             {
                 AnimationType.Stand => standAnimator,

@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using Event;
 
 public class TitleMenu : MonoBehaviour
 {
@@ -46,6 +47,8 @@ public class TitleMenu : MonoBehaviour
         inGameUI.interactable = true;
         inGameUI.blocksRaycasts = true;
         isTitleClosed = true;
+        
+        EventManager.OnGameStart.Trigger(0);
     }
 
     public void ShowCredit()

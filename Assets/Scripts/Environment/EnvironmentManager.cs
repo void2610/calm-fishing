@@ -115,7 +115,7 @@ namespace Environment
             while (true)
             {
                 var intensity = Random.Range(0.0f, 1.0f);
-                DOTween.To(() => godRay.intensity, x => godRay.intensity = x, intensity, 3.0f);
+                await DOTween.To(() => godRay.intensity, x => godRay.intensity = x, intensity, 3.0f);
                 await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(30f, 180f)), cancellationToken: cancellationToken);
             }
         }
