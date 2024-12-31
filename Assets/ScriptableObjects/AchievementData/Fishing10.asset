@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ed617cc877d241419f3f8d8ad2f4bad, type: 3}
-  m_Name: 100Fishing
+  m_Name: Fishing10
   m_EditorClassIdentifier: 
-  id: 9
-  title: "\u30D9\u30C6\u30E9\u30F3\u91E3\u308A\u5E2B"
+  id: 7
+  title: "\u65B0\u7C73\u91E3\u308A\u5E2B"
   icon: {fileID: 21300000, guid: c96c7837431747f49ae237c635940407, type: 3}
-  description: "\u9B5A\u3092100\u56DE\u91E3\u308A\u4E0A\u3052\u305F"
+  description: "\u9B5A\u309210\u56DE\u91E3\u308A\u4E0A\u3052\u308B"
   isConditionHidden: 0
   conditions:
   - conditionType: 0
     eventType: 1
-    requiredCallCount: 100
+    requiredCallCount: 10
     requiredItem: {fileID: 0}
     requiredValue: 1

@@ -22,6 +22,7 @@ namespace Event
         
         private void Save()
         {
+            Debug.Log(_isUnlockedList.Count);
             for (var i = 0; i < allAchievementDataList.list.Count; i++)
             {
                 PlayerPrefs.SetInt($"achievement{i}", _isUnlockedList[i] ? 1 : 0);
@@ -97,6 +98,8 @@ namespace Event
             }
             Instance = this;
             
+            allAchievementDataList.Register();
+            
             // イベントの監視
             foreach(var eventType in Enum.GetValues(typeof(GameEventType)))
             {
@@ -104,7 +107,6 @@ namespace Event
                 EventManager.EventDictionary[(GameEventType)eventType].Subscribe(_ => OnGameEvent((GameEventType)eventType));
             }
             
-            allAchievementDataList.Register();
             Load();
             Save();
             achievementUI.Init(allAchievementDataList, _isUnlockedList);
