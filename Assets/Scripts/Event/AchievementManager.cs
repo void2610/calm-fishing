@@ -22,7 +22,6 @@ namespace Event
         
         private void Save()
         {
-            Debug.Log(_isUnlockedList.Count);
             for (var i = 0; i < allAchievementDataList.list.Count; i++)
             {
                 PlayerPrefs.SetInt($"achievement{i}", _isUnlockedList[i] ? 1 : 0);
