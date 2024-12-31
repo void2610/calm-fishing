@@ -42,10 +42,10 @@ public class AchievementNotice : MonoBehaviour
         gauge.fillAmount = 0;
 
         await _rectTransform.DOMoveX(rightMoveDistance, showDuration).SetEase(Ease.OutSine).SetRelative().ToUniTask();
-        gauge.DOFillAmount(1, waitDuration).SetEase(Ease.Linear);
+        gauge.DOFillAmount(1, waitDuration).SetEase(Ease.Linear).ToUniTask().Forget();
         await UniTask.Delay((int)(waitDuration * 1000));
         
-        _rectTransform.DOMoveY(upMoveDistance, closeDuration).SetEase(Ease.InSine).SetRelative();
+        _rectTransform.DOMoveY(upMoveDistance, closeDuration).SetEase(Ease.InSine).SetRelative().ToUniTask().Forget();
         await _canvasGroup.DOFade(0, closeDuration).SetEase(Ease.InSine).ToUniTask();
 
         // Reset

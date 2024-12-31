@@ -1,5 +1,6 @@
 using System.Collections;
 using DG.Tweening;
+using Event;
 using Fishing;
 using Particle;
 using UnityEngine;
@@ -49,9 +50,11 @@ namespace Environment
         private void OnTriggerEnter2D(Collider2D other)
         {
             if(GameManager.Instance.IsPaused) return;
+            if(_isStopping) return;
             
             if (other.TryGetComponent(out MouseCollider mouseCollider))
             {   
+                EventManager.OnRemoveCloud.Trigger(0);
                 StartCoroutine(nameof(StopCoroutine));
             }
         }

@@ -9,6 +9,7 @@ namespace Event
     {
         OnGameStart, 
         OnItemGet,
+        OnRemoveCloud,
     }
     
     public static class EventManager
@@ -17,11 +18,14 @@ namespace Event
         public static readonly GameEvent<int> OnGameStart = new (0);
         // アイテム取得時: 取得したアイテムのデータ
         public static readonly GameEvent<ItemData> OnItemGet = new (null);
+        // 雲を取り除いた時: なし
+        public static readonly GameEvent<int> OnRemoveCloud = new (0);
         
         public static readonly Dictionary<GameEventType, GameEventBase> EventDictionary = new ()
         {
             {GameEventType.OnGameStart, OnGameStart},
             {GameEventType.OnItemGet, OnItemGet},
+            {GameEventType.OnRemoveCloud, OnRemoveCloud},
         };
     
         // ゲーム開始時にイベントをリセット
