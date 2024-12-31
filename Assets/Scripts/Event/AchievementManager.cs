@@ -12,6 +12,8 @@ namespace Event
         
         [SerializeField] private AchievementDataList allAchievementDataList;
         [SerializeField] private AchievementUI achievementUI;
+        [SerializeField] private AchievementNotice achievementNotice;
+
         
         private readonly List<bool> _isUnlockedList = new ();
         private readonly Dictionary<GameEventType, int> _callCountDictionary = new ();
@@ -41,6 +43,7 @@ namespace Event
             
             _isUnlockedList[id] = true;
             achievementUI.UnLockAchievement(id);
+            achievementNotice.Notice(allAchievementDataList.list[id]);
             Save();
         }
         
@@ -99,5 +102,7 @@ namespace Event
                 EventManager.EventDictionary[(GameEventType)eventType].Subscribe(_ => OnGameEvent((GameEventType)eventType));
             }
         }
+
+
     }
 }
