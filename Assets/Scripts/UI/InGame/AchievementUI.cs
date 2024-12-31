@@ -62,7 +62,7 @@ public class AchievementUI : MonoBehaviour{
         else
         {
             nameText.text = "???";
-            descriptionText.text = "???";
+            descriptionText.text = achievementData.isConditionHidden ? "???" : achievementData.description;
             iconImage.sprite = null;
             iconImage.color = new Color(0, 0, 0, 0);
         }

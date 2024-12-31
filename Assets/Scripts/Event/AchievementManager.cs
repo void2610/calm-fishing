@@ -54,7 +54,7 @@ namespace Event
             
             _isUnlockedList[id] = true;
             achievementUI.UnLockAchievement(id);
-            achievementNotice.Notice(allAchievementDataList.list[id]);
+            achievementNotice.Notice(allAchievementDataList.list[id]).Forget();
         }
         
         private void OnGameEvent(GameEventType eventType)

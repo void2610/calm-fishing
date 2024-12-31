@@ -9,6 +9,7 @@ public class AchievementNotice : MonoBehaviour
 {
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI title;
+    [SerializeField] private Image gauge;
     [SerializeField] private float showDuration = 0.5f;
     [SerializeField] private float waitDuration = 3f;
     [SerializeField] private float closeDuration = 1f;
@@ -38,9 +39,12 @@ public class AchievementNotice : MonoBehaviour
         // なぜかエラーが出るが大丈夫
         icon.sprite = achievement.icon;
         title.text = achievement.title;
+        gauge.fillAmount = 0;
 
         await _rectTransform.DOMoveX(rightMoveDistance, showDuration).SetEase(Ease.OutSine).SetRelative().ToUniTask();
+        gauge.DOFillAmount(1, waitDuration).SetEase(Ease.Linear);
         await UniTask.Delay((int)(waitDuration * 1000));
+        
         _rectTransform.DOMoveY(upMoveDistance, closeDuration).SetEase(Ease.InSine).SetRelative();
         await _canvasGroup.DOFade(0, closeDuration).SetEase(Ease.InSine).ToUniTask();
 
@@ -48,6 +52,7 @@ public class AchievementNotice : MonoBehaviour
         await _rectTransform.DOMoveX(-rightMoveDistance, 0).SetRelative();
         await _rectTransform.DOMoveY(-upMoveDistance, 0).SetRelative();
         _canvasGroup.alpha = 1;
+        gauge.fillAmount = 0;
     }
 
     private void Awake()
@@ -56,5 +61,6 @@ public class AchievementNotice : MonoBehaviour
         _rectTransform = this.GetComponent<RectTransform>();
         
         _rectTransform.DOMoveX(-rightMoveDistance, 0).SetRelative();
+        gauge.fillAmount = 0;
     }
 }

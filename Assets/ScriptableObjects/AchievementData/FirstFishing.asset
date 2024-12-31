@@ -16,6 +16,7 @@ MonoBehaviour:
   title: "\u30D2\u30C3\u30C8\uFF01"
   icon: {fileID: -5029859455232652269, guid: af3d97a28f94cff479f1f743816f7cbc, type: 3}
   description: "\u521D\u3081\u3066\u9B5A\u3092\u91E3\u308A\u4E0A\u3052\u305F"
+  isConditionHidden: 1
   conditions:
   - conditionType: 0
     eventType: 1
