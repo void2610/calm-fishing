@@ -26,14 +26,25 @@ namespace Event
             {
                 PlayerPrefs.SetInt($"achievement{i}", _isUnlockedList[i] ? 1 : 0);
             }
+            
+            foreach (var count in _callCountDictionary)
+            {
+                PlayerPrefs.SetInt($"callCount{count.Key.ToString()}", count.Value);
+            }
         }
     
         private void Load()
         {
             _isUnlockedList.Clear();
-            for (var i = 0; i < allAchievementDataList.list.Count; i++)
+            for (var i = 1; i < allAchievementDataList.list.Count+1; i++)
             {
                 _isUnlockedList.Add(PlayerPrefs.GetInt($"achievement{i}", 0) == 1);
+            }
+
+            for(var i = 0; i < Enum.GetValues(typeof(GameEventType)).Length; i++)
+            {
+                var eventType = (GameEventType)i;
+                _callCountDictionary[eventType] = PlayerPrefs.GetInt($"callCount{eventType.ToString()}", 0);
             }
         }
         
@@ -44,11 +55,12 @@ namespace Event
             _isUnlockedList[id] = true;
             achievementUI.UnLockAchievement(id);
             achievementNotice.Notice(allAchievementDataList.list[id]);
-            Save();
         }
         
-        private void CheckAchievement()
+        private void OnGameEvent(GameEventType eventType)
         {
+            _callCountDictionary[eventType]++;
+            
             foreach (var achievement in allAchievementDataList.list)
             {
                 var isUnlocked = new List<bool>();
@@ -69,15 +81,11 @@ namespace Event
                 
                 if (isUnlocked.TrueForAll(x => x))
                 {
-                    UnlockAchievement(achievement.id);
+                    UnlockAchievement(achievement.id - 1);
                 }
             }
-        }
-        
-        private void OnGameEvent(GameEventType eventType)
-        {
-            _callCountDictionary[eventType]++;
-            CheckAchievement();
+            
+            Save();
         }
 
         private void Awake()
@@ -89,18 +97,17 @@ namespace Event
             }
             Instance = this;
             
-            
-            allAchievementDataList.Register();
-            Load();
-            Save();
-            achievementUI.Init(allAchievementDataList, _isUnlockedList);
-            
             // イベントの監視
             foreach(var eventType in Enum.GetValues(typeof(GameEventType)))
             {
                 _callCountDictionary.Add((GameEventType)eventType, 0);
                 EventManager.EventDictionary[(GameEventType)eventType].Subscribe(_ => OnGameEvent((GameEventType)eventType));
             }
+            
+            allAchievementDataList.Register();
+            Load();
+            Save();
+            achievementUI.Init(allAchievementDataList, _isUnlockedList);
         }
 
 

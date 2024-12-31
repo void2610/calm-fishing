@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed617cc877d241419f3f8d8ad2f4bad, type: 3}
+  m_Name: FirstFishing
+  m_EditorClassIdentifier: 
+  id: 2
+  title: "\u30D2\u30C3\u30C8\uFF01"
+  icon: {fileID: -5029859455232652269, guid: af3d97a28f94cff479f1f743816f7cbc, type: 3}
+  description: "\u521D\u3081\u3066\u9B5A\u3092\u91E3\u308A\u4E0A\u3052\u305F"
+  conditions:
+  - conditionType: 0
+    eventType: 1
+    requiredCallCount: 1
+    requiredItem: {fileID: 0}
+    requiredValue: 1

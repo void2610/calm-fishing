@@ -17,14 +17,25 @@ public class AchievementNotice : MonoBehaviour
 
     private CanvasGroup _canvasGroup;
     private RectTransform _rectTransform;
+    private UniTaskCompletionSource _currentTask;
     
-    public void Notice(AchievementData achievement)
+    public async UniTaskVoid Notice(AchievementData achievement)
     {
-        NoticeAsync(achievement).Forget();
+        // 現在の動作が完了するまで待機
+        if (_currentTask != null)
+        {
+            await _currentTask.Task;
+        }
+
+        // 新しいタスクの開始
+        _currentTask = new UniTaskCompletionSource();
+        await NoticeAsync(achievement);
+        _currentTask.TrySetResult();
     }
     
-    private async UniTaskVoid NoticeAsync(AchievementData achievement)
+    private async UniTask NoticeAsync(AchievementData achievement)
     {
+        // なぜかエラーが出るが大丈夫
         icon.sprite = achievement.icon;
         title.text = achievement.title;
 
@@ -32,10 +43,10 @@ public class AchievementNotice : MonoBehaviour
         await UniTask.Delay((int)(waitDuration * 1000));
         _rectTransform.DOMoveY(upMoveDistance, closeDuration).SetEase(Ease.InSine).SetRelative();
         await _canvasGroup.DOFade(0, closeDuration).SetEase(Ease.InSine).ToUniTask();
-        
+
         // Reset
-        _rectTransform.DOMoveX(-rightMoveDistance, 0).SetRelative();
-        _rectTransform.DOMoveY(-upMoveDistance, 0).SetRelative();
+        await _rectTransform.DOMoveX(-rightMoveDistance, 0).SetRelative();
+        await _rectTransform.DOMoveY(-upMoveDistance, 0).SetRelative();
         _canvasGroup.alpha = 1;
     }
 
@@ -46,5 +57,4 @@ public class AchievementNotice : MonoBehaviour
         
         _rectTransform.DOMoveX(-rightMoveDistance, 0).SetRelative();
     }
-    
 }

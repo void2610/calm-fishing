@@ -50,13 +50,13 @@ public class AchievementUI : MonoBehaviour{
         content.GetChild(id).GetComponent<AchievementItem>().Unlock();
     }
     
-    private void ShowDetail(AchievementData itemData)
+    private void ShowDetail(AchievementData achievementData)
     {
-        if(AchievementManager.Instance.IsUnlocked(itemData.id))
+        if(AchievementManager.Instance.IsUnlocked(achievementData.id - 1))
         {
-            nameText.text = itemData.title;
-            descriptionText.text = itemData.description;
-            iconImage.sprite = itemData.icon;
+            nameText.text = achievementData.title;
+            descriptionText.text = achievementData.description;
+            iconImage.sprite = achievementData.icon;
             iconImage.color = new Color(1, 1, 1, 1);
         }
         else
