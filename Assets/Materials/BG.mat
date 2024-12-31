@@ -65,7 +65,7 @@ Material:
     - _EnableExternalAlpha: 0
     - _Float: 2.74
     - _Height: 0.7
-    - _Height1: -0.17935283
+    - _Height1: -0.37379435
     - _Height2: 1
     - _Power: 1
     - _QueueControl: 0
@@ -79,9 +79,9 @@ Material:
     - _ZWriteControl: 0
     m_Colors:
     - _Color: {r: 0, g: 0.39905658, b: 0.5660378, a: 1}
-    - _Color1: {r: 0, g: 0.61752427, b: 0.9001085, a: 0}
-    - _Color2: {r: 0.5923799, g: 0.68721604, b: 0.40762007, a: 0}
-    - _Color3: {r: 0, g: 0, b: 1, a: 0}
+    - _Color1: {r: 0, g: 0.7947278, b: 1, a: 0}
+    - _Color2: {r: 0.27585694, g: 0.8412449, b: 0.724143, a: 0}
+    - _Color3: {r: 0.27585694, g: 0.23150347, b: 0.83232224, a: 0}
     - _Color_1: {r: 0.039215688, g: 0.14901961, b: 0.35686275, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

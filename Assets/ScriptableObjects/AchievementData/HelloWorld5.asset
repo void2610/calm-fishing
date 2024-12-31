@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ed617cc877d241419f3f8d8ad2f4bad, type: 3}
-  m_Name: 0
+  m_Name: HelloWorld5
   m_EditorClassIdentifier: 
-  id: 0
-  title: "\u306F\u3058\u3081\u307E\u3057\u3066\uFF01"
-  icon: {fileID: -5029859455232652269, guid: af3d97a28f94cff479f1f743816f7cbc, type: 3}
-  description: "\u30B2\u30FC\u30E0\u3092\u30D7\u30EC\u30A4\u3059\u308B"
+  id: 17
+  title: "\u307E\u305F\u6765\u305F\u306E...?"
+  icon: {fileID: 21300000, guid: df392ad408bd540d9b35a57c3c10db9f, type: 3}
+  description: "5\u56DE\u30B2\u30FC\u30E0\u3092\u958B\u59CB\u3059\u308B"
+  isConditionHidden: 0
   conditions:
   - conditionType: 0
     eventType: 0
-    requiredCallCount: 1
+    requiredCallCount: 5
     requiredItem: {fileID: 0}
-    requiredValue: 0
+    requiredValue: 1

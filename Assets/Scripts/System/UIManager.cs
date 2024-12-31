@@ -54,6 +54,18 @@ public class UIManager : MonoBehaviour
         EnableCanvasGroup("Inventory", false);
     }
     
+    public void OpenAchievement()
+    {
+        SeManager.Instance.PlaySe("button");
+        EnableCanvasGroup("Achievement", true);
+    }
+    
+    public void CloseAchievement()
+    {
+        SeManager.Instance.PlaySe("button");
+        EnableCanvasGroup("Achievement", false);
+    }
+    
     public void OnClickPause()
     {
         SeManager.Instance.PlaySe("button");

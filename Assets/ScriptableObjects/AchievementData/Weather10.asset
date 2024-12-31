@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed617cc877d241419f3f8d8ad2f4bad, type: 3}
+  m_Name: Weather10
+  m_EditorClassIdentifier: 
+  id: 20
+  title: "\u660E\u65E5\u306F\u6674\u308C\u308B\u304B\u306A"
+  icon: {fileID: 21300000, guid: e99fa164378b346f3bd009f18a7db74c, type: 3}
+  description: "10\u56DE\u5929\u6C17\u304C\u5909\u5316\u3059\u308B"
+  isConditionHidden: 0
+  conditions:
+  - conditionType: 0
+    eventType: 4
+    requiredCallCount: 10
+    requiredItem: {fileID: 0}
+    requiredValue: 1

@@ -11,6 +11,7 @@ namespace ScriptableObject
         public string title;
         public Sprite icon;
         public string description;
+        public bool isConditionHidden; // 条件を非表示にするか
         public List<AchievementCondition> conditions; // リスト内の全てを満たすと解除
     }
     

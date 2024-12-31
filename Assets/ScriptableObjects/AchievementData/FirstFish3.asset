@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed617cc877d241419f3f8d8ad2f4bad, type: 3}
+  m_Name: FirstFish3
+  m_EditorClassIdentifier: 
+  id: 4
+  title: "\u30A6\u30B0\u30A4\u30B9\u30D5\u30A3\u30C3\u30B7\u30E5"
+  icon: {fileID: 21300000, guid: 32da7efe2fda74508971079e0a01ddc0, type: 3}
+  description: "\u521D\u3081\u3066\u30A6\u30B0\u30A4\u30B9\u30D5\u30A3\u30C3\u30B7\u30E5\u3092\u91E3\u308A\u4E0A\u3052\u308B"
+  isConditionHidden: 1
+  conditions:
+  - conditionType: 1
+    eventType: 1
+    requiredCallCount: 1
+    requiredItem: {fileID: 11400000, guid: 28cc11a08df724a829a368777019842a, type: 2}
+    requiredValue: 1
