@@ -1,13 +1,16 @@
 using System.Collections.Generic;
+using Event;
 using Fishing;
 using ScriptableObject;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class InventoryUI : MonoBehaviour{
+public class AchievementUI : MonoBehaviour{
+    [FormerlySerializedAs("achievementItemPrefab")]
     [Header("インベントリ")]
-    [SerializeField] private GameObject inventoryItemPrefab;
+    [SerializeField] private GameObject achievementItemPrefab;
     [SerializeField] private Transform content;
     [SerializeField] private Vector2 offset;
     [SerializeField] private Vector2 padding;
@@ -17,43 +20,43 @@ public class InventoryUI : MonoBehaviour{
     [SerializeField] private TextMeshProUGUI descriptionText;
     [SerializeField] private Image iconImage;
     
-    public void Init(ItemDataList allItemDataList, List<int> itemAmountList)
+    public void Init(AchievementDataList allAchievementDataList, List<bool> isUnlockedList)
     {
-        for (var i = 0; i < allItemDataList.list.Count; i++)
+        for (var i = 0; i < allAchievementDataList.list.Count; i++)
         {
-            var itemData = allItemDataList.list[i];
+            var itemData = allAchievementDataList.list[i];
             var pos = new Vector2(
                 (i % column) * padding.x + offset.x,
                 -(i / column) * padding.y + offset.y
             );
 
-            var inventoryItem = Instantiate(inventoryItemPrefab, content);
-            var rectTransform = inventoryItem.GetComponent<RectTransform>();
+            var achievementItem = Instantiate(achievementItemPrefab, content);
+            var rectTransform = achievementItem.GetComponent<RectTransform>();
             if (rectTransform != null)
             {
                 rectTransform.anchoredPosition = pos;
             }
 
-            inventoryItem.GetComponent<InventoryItem>().Init(itemData, itemAmountList[i]);
-            Utils.AddEventToObject(inventoryItem, () => ShowDetail(itemData), UnityEngine.EventSystems.EventTriggerType.PointerEnter);
+            achievementItem.GetComponent<AchievementItem>().Init(itemData, isUnlockedList[i]);
+            Utils.AddEventToObject(achievementItem, () => ShowDetail(itemData), UnityEngine.EventSystems.EventTriggerType.PointerEnter);
         }
         
-        ShowDetail(allItemDataList.list[0]);
+        ShowDetail(allAchievementDataList.list[0]);
     }
     
-    public void UpdateAmount(int id, int amount)
+    public void UnLockAchievement(int id)
     {
         if(!content) return;
-        content.GetChild(id).GetComponent<InventoryItem>().UpdateAmount(amount);
+        content.GetChild(id).GetComponent<AchievementItem>().Unlock();
     }
     
-    private void ShowDetail(ItemData itemData)
+    private void ShowDetail(AchievementData itemData)
     {
-        if(InventoryManager.Instance.GetItemAmount(itemData.id) > 0)
+        if(AchievementManager.Instance.IsUnlocked(itemData.id))
         {
-            nameText.text = itemData.displayName;
+            nameText.text = itemData.title;
             descriptionText.text = itemData.description;
-            iconImage.sprite = itemData.sprite;
+            iconImage.sprite = itemData.icon;
             iconImage.color = new Color(1, 1, 1, 1);
         }
         else

@@ -8,10 +8,15 @@ namespace Event
 {
     public class AchievementManager : MonoBehaviour
     {
+        public static AchievementManager Instance { get; private set; }
+        
         [SerializeField] private AchievementDataList allAchievementDataList;
+        [SerializeField] private AchievementUI achievementUI;
         
         private readonly List<bool> _isUnlockedList = new ();
         private readonly Dictionary<GameEventType, int> _callCountDictionary = new ();
+        
+        public bool IsUnlocked(int id) => _isUnlockedList[id];
         
         private void Save()
         {
@@ -35,7 +40,7 @@ namespace Event
             if (_isUnlockedList[id]) return;
             
             _isUnlockedList[id] = true;
-            Debug.Log($"Achievement Unlocked: {allAchievementDataList.list[id].title}");
+            achievementUI.UnLockAchievement(id);
             Save();
         }
         
@@ -74,9 +79,18 @@ namespace Event
 
         private void Awake()
         {
+            if(Instance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            Instance = this;
+            
+            
             allAchievementDataList.Register();
             Load();
             Save();
+            achievementUI.Init(allAchievementDataList, _isUnlockedList);
             
             // イベントの監視
             foreach(var eventType in Enum.GetValues(typeof(GameEventType)))
