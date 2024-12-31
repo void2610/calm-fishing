@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 19
   title: "\u6642\u306F\u6D41\u308C\u3086\u304F..."
-  icon: {fileID: 21300000, guid: 141dcd1439a644dbc95eaf535c21d822, type: 3}
+  icon: {fileID: 21300000, guid: e99fa164378b346f3bd009f18a7db74c, type: 3}
   description: "10\u56DE\u6642\u9593\u5E2F\u304C\u5909\u5316\u3059\u308B"
   isConditionHidden: 0
   conditions:

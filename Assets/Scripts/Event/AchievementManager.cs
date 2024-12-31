@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Fishing;
 using ScriptableObject;
 using UnityEngine;
+using unityroom.Api;
 
 namespace Event
 {
@@ -55,6 +56,10 @@ namespace Event
             _isUnlockedList[id] = true;
             achievementUI.UnLockAchievement(id);
             achievementNotice.Notice(allAchievementDataList.list[id]).Forget();
+            
+            // 解除数を送信
+            var unlockCount = _isUnlockedList.FindAll(x => x).Count;
+            UnityroomApiClient.Instance.SendScore(2, unlockCount, ScoreboardWriteMode.HighScoreDesc);
         }
         
         private void OnGameEvent(GameEventType eventType)
