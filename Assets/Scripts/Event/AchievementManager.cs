@@ -36,7 +36,7 @@ namespace Event
         private void Load()
         {
             _isUnlockedList.Clear();
-            for (var i = 1; i < allAchievementDataList.list.Count+1; i++)
+            for (var i = 0; i < allAchievementDataList.list.Count; i++)
             {
                 _isUnlockedList.Add(PlayerPrefs.GetInt($"achievement{i}", 0) == 1);
             }
@@ -81,7 +81,7 @@ namespace Event
                 
                 if (isUnlocked.TrueForAll(x => x))
                 {
-                    UnlockAchievement(achievement.id - 1);
+                    UnlockAchievement(achievement.id);
                 }
             }
             

@@ -52,7 +52,7 @@ public class AchievementUI : MonoBehaviour{
     
     private void ShowDetail(AchievementData achievementData)
     {
-        if(AchievementManager.Instance.IsUnlocked(achievementData.id - 1))
+        if(AchievementManager.Instance.IsUnlocked(achievementData.id))
         {
             nameText.text = achievementData.title;
             descriptionText.text = achievementData.description;

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ed617cc877d241419f3f8d8ad2f4bad, type: 3}
   m_Name: 1000Fishing
   m_EditorClassIdentifier: 
-  id: 12
+  id: 11
   title: "\u4F1D\u8AAC\u306E\u91E3\u308A\u5E2B"
   icon: {fileID: 21300000, guid: c96c7837431747f49ae237c635940407, type: 3}
   description: "\u9B5A\u30921000\u56DE\u91E3\u308A\u4E0A\u3052\u305F"
