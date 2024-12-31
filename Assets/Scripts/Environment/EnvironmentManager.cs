@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Event;
 using Fishing;
 using Particle;
 using R3;
@@ -74,6 +75,7 @@ namespace Environment
                         break;
                     }
                 }
+                EventManager.OnWeatherChanged.Trigger(weather);
                 
                 await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(whetherInterval.x, whetherInterval.y)), cancellationToken: objectCancellationToken);
             }
@@ -88,6 +90,8 @@ namespace Environment
                 var timePeriod = (TimePeriod)(((int)_timePeriod.Value + 1) % 4);
                 _timePeriod.Value = timePeriod;
                 timePeriodText.text = timePeriod.ToString();
+                
+                EventManager.OnTimePeriodChanged.Trigger(timePeriod);
                 
                 await UniTask.Delay(TimeSpan.FromSeconds(dayLength / 4), cancellationToken: cancellationToken);
             }

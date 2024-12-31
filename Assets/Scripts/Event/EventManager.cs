@@ -10,6 +10,8 @@ namespace Event
         OnGameStart, 
         OnItemGet,
         OnRemoveCloud,
+        OnTimePeriodChanged,
+        OnWeatherChanged,
     }
     
     public static class EventManager
@@ -20,12 +22,18 @@ namespace Event
         public static readonly GameEvent<ItemData> OnItemGet = new (null);
         // 雲を取り除いた時: なし
         public static readonly GameEvent<int> OnRemoveCloud = new (0);
+        // 時間帯変化時: 変化後の時間帯
+        public static readonly GameEvent<TimePeriod> OnTimePeriodChanged = new (TimePeriod.Dusk);
+        // 天候変化時: 変化後の天候
+        public static readonly GameEvent<Weather> OnWeatherChanged = new (Weather.Sunny);
         
         public static readonly Dictionary<GameEventType, GameEventBase> EventDictionary = new ()
         {
             {GameEventType.OnGameStart, OnGameStart},
             {GameEventType.OnItemGet, OnItemGet},
             {GameEventType.OnRemoveCloud, OnRemoveCloud},
+            {GameEventType.OnTimePeriodChanged, OnTimePeriodChanged},
+            {GameEventType.OnWeatherChanged, OnWeatherChanged},
         };
     
         // ゲーム開始時にイベントをリセット
