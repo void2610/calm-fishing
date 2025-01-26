@@ -8,12 +8,17 @@ public class TutorialPanel : MonoBehaviour
     [SerializeField] private List<GameObject> pages;
     
     private int _currentPage = 0;
+    private bool _isShowed = false;
     private GameObject _currentActivePage;
     private RectTransform _rectTransform;
     
     public void Show()
     {
-        _rectTransform.DOMoveY(0.7f, 5f);
+        if(_isShowed)
+            _rectTransform.DOMoveY(9, 5f);
+        else
+            _rectTransform.DOMoveY(0.7f, 5f);
+        _isShowed = !_isShowed;
         CameraMove.Instance.ShakeCamera(5f, 3f);
     }
 
