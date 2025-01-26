@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,9 +9,17 @@ public class TutorialPanel : MonoBehaviour
     [SerializeField] private Button nextButton;
     [SerializeField] private Button previousButton;
     
+    private const float OFFSET = 500;
     private int _currentPage = 0;
     private GameObject _currentActivePage;
+    private RectTransform _rectTransform;
     
+    public void Show()
+    {
+        _rectTransform.DOMoveY(-1000, 5f).SetRelative();
+        CameraMove.Instance.ShakeCamera(5f, 3f);
+    }
+
     private void NextPage()
     {
         if (_currentPage >= pages.Count - 1) return;
@@ -35,5 +44,8 @@ public class TutorialPanel : MonoBehaviour
         nextButton.onClick.AddListener(NextPage);
         previousButton.onClick.AddListener(PreviousPage);
         ChangePage(0);
+        
+        _rectTransform = GetComponent<RectTransform>();
+        _rectTransform.anchoredPosition = new Vector2(0, OFFSET);
     }
 }
