@@ -6,17 +6,14 @@ using UnityEngine.UI;
 public class TutorialPanel : MonoBehaviour
 {
     [SerializeField] private List<GameObject> pages;
-    [SerializeField] private Button nextButton;
-    [SerializeField] private Button previousButton;
     
-    private const float OFFSET = 500;
     private int _currentPage = 0;
     private GameObject _currentActivePage;
     private RectTransform _rectTransform;
     
     public void Show()
     {
-        _rectTransform.DOMoveY(-1000, 5f).SetRelative();
+        _rectTransform.DOMoveY(0.7f, 5f);
         CameraMove.Instance.ShakeCamera(5f, 3f);
     }
 
@@ -41,11 +38,21 @@ public class TutorialPanel : MonoBehaviour
 
     private void Awake()
     {
-        nextButton.onClick.AddListener(NextPage);
-        previousButton.onClick.AddListener(PreviousPage);
         ChangePage(0);
         
         _rectTransform = GetComponent<RectTransform>();
-        _rectTransform.anchoredPosition = new Vector2(0, OFFSET);
+        _rectTransform.anchoredPosition = new Vector2(0, 250);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+        {
+            NextPage();
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        {
+            PreviousPage();
+        }
     }
 }
